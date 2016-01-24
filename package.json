@@ -1,8 +1,7 @@
 {
   "name": "swagger-md",
-  "version": "0.0.1",
   "description": "Converts Swagger API spec to Markdown file",
-  "main": "index.js",
+  "main": "lib/swagger-converter.js",
   "private": false,
   "scripts": {
     "build": "rm -rf lib && babel src --out-dir lib",
@@ -22,7 +21,7 @@
     "converter",
     "api"
   ],
-  "author": "Kristofer Sommestad <kristofer@sommestad.com> (http://sommestad.net)",
+  "author": "Springworks (http://springworks.se)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Springworks/swagger-md/issues"
