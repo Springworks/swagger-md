@@ -1,0 +1,9 @@
+{
+  "presets": [
+    "es2015-node4"
+  ],
+  "plugins": [
+    "transform-runtime",
+    "transform-strict-mode"
+  ]
+}

@@ -33,6 +33,7 @@ coverage
 
 /config/runtime.json
 
-# Ignore build output
-lib
-.eslintcache
+# Ignore source and tests output
+src
+test
+test-util

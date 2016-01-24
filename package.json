@@ -1,0 +1,53 @@
+{
+  "name": "swagger-md",
+  "version": "0.0.1",
+  "description": "Converts Swagger API spec to Markdown file",
+  "main": "index.js",
+  "private": false,
+  "scripts": {
+    "build": "rm -rf lib && babel src --out-dir lib",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "lint": "eslint --cache .",
+    "prepublish": "npm run build",
+    "test": "NODE_ENV=test istanbul cover _mocha",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Springworks/swagger-md.git"
+  },
+  "keywords": [
+    "swagger",
+    "markdown",
+    "converter",
+    "api"
+  ],
+  "author": "Kristofer Sommestad <kristofer@sommestad.com> (http://sommestad.net)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Springworks/swagger-md/issues"
+  },
+  "homepage": "https://github.com/Springworks/swagger-md#readme",
+  "dependencies": {
+    "babel-runtime": "6.3.19"
+  },
+  "devDependencies": {
+    "@springworks/test-harness": "1.2.3",
+    "babel-cli": "6.4.5",
+    "babel-core": "6.4.5",
+    "babel-eslint": "4.1.6",
+    "babel-plugin-transform-runtime": "6.4.3",
+    "babel-plugin-transform-strict-mode": "6.3.13",
+    "babel-preset-es2015-node4": "2.0.2",
+    "eslint": "1.10.3",
+    "eslint-config-springworks": "6.0.0",
+    "eslint-plugin-import": "0.12.1",
+    "eslint-plugin-mocha": "1.1.0",
+    "eslint-plugin-should-promised": "1.0.6",
+    "eslint-plugin-springworks": "1.1.1",
+    "fixture-loader": "0.2.5",
+    "istanbul": "0.4.2",
+    "mocha": "2.3.4",
+    "semantic-release": "4.3.5"
+  }
+}

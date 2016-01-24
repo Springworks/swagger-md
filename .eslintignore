@@ -1,0 +1,5 @@
+.idea
+.iml
+coverage
+node_modules
+lib
