@@ -22,20 +22,21 @@ function generateMethods(path_key, path, opt_response_example_provider) {
 function generateResponses(responses) {
   return Object.keys(responses).map(response_key => {
     const response = responses[response_key];
+    const schema = generateResponseSchema(response);
     return [
       `#### Response: ${response_key}`,
       response.description,
       '**Schema**',
-      generateResponseSchema(response.schema),
+      schema,
     ].join('\n\n');
   }).join('\n\n');
 }
 
-function generateResponseSchema(schema) {
-  if (!schema) {
+function generateResponseSchema(response) {
+  if (!response.schema) {
     return `N/A`;
   }
-  return schema_generator.createSchemaList(schema);
+  return schema_generator.createSchemaList(response.schema);
 }
 
 

@@ -4,8 +4,8 @@ const fixture_loader = createFixtureLoader('./test-util/fixtures');
 
 const api = {
 
-  loadSwaggerSpec() {
-    return fixture_loader.loadParsedJson('swagger', 'pet-store');
+  loadSwaggerSpec(filename = 'pet-store') {
+    return fixture_loader.loadParsedJson('swagger', filename);
   },
 
   loadSwaggerSpecMarkdown(filename = 'pet-store.md') {

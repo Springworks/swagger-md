@@ -7,7 +7,6 @@ describe('test/unit/swagger-converter-test.js', () => {
 
     describe('with a valid, parsed Swagger spec', () => {
       let swagger_api_spec;
-      let swagger_api_md_str;
 
       beforeEach(() => {
         swagger_api_spec = fixtures.loadSwaggerSpec();
@@ -15,18 +14,16 @@ describe('test/unit/swagger-converter-test.js', () => {
 
       describe('omitting response_provider function', () => {
 
-        beforeEach(() => {
-          swagger_api_md_str = fixtures.loadSwaggerSpecMarkdown();
-        });
-
-        it('should return contents of a valid .md file', () => {
+        it('should not include examples in result', () => {
           const markdown_str = converter.convertToMarkdown(swagger_api_spec, null);
-          markdown_str.should.eql(swagger_api_md_str);
+          markdown_str.should.not.match(/Example response/);
         });
 
       });
 
       describe('providing a response_provider function, to generate examples for each response', () => {
+        let swagger_api_md_str;
+
         function responseProvider() {
           return [
             '```json',
