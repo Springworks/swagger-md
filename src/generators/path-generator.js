@@ -6,7 +6,7 @@
 import schema_generator from './schema-generator';
 import type_picker from './type-picker';
 
-function generateMethods(path_key, path) {
+function generateMethods(path_key, path, opt_response_example_provider) {
   return Object.keys(path).map(method => {
     const method_spec = path[method];
     return [
@@ -14,7 +14,8 @@ function generateMethods(path_key, path) {
       method_spec.description,
       generateParameters(method_spec.parameters),
       generateResponses(method_spec.responses),
-    ].join('\n\n');
+      generateExampleResponse(path_key, method, opt_response_example_provider),
+    ].filter(Boolean).join('\n\n');
   });
 }
 
@@ -34,21 +35,7 @@ function generateResponseSchema(schema) {
   if (!schema) {
     return `N/A`;
   }
-
   return schema_generator.createSchemaList(schema);
-  //
-  //if (schema.$ref) {
-  //  return `- ${generateDefinitionReference(schema.$ref)}`;
-  //}
-  //else if (schema.type) {
-  //  let value = `- (${schema.type})`;
-  //  if (schema.items) {
-  //    value += `\n  - ${generateDefinitionReference(schema.items.$ref)}`;
-  //  }
-  //  return value;
-  //}
-  //
-  //throw new Error(`Unsupported schema: ${schema}`);
 }
 
 
@@ -72,10 +59,21 @@ function generateParameters(params) {
   ].join('\n\n');
 }
 
+function generateExampleResponse(path_key, method, opt_response_example_provider) {
+  if (!opt_response_example_provider) {
+    return undefined;
+  }
+  const example_response = opt_response_example_provider(path_key.toLowerCase(), method.toLowerCase());
+  return [
+    '#### Example response',
+    example_response,
+  ].join('\n\n');
+}
+
 const api = {
 
-  generatePath(path_key, path) {
-    return generateMethods(path_key, path).join('\n\n');
+  generatePath(path_key, path, opt_response_example_provider) {
+    return generateMethods(path_key, path, opt_response_example_provider).join('\n\n');
   },
 
 };

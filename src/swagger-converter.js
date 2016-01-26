@@ -2,11 +2,11 @@ import intro_generator from './generators/intro-generator';
 import path_generator from './generators/path-generator';
 import definition_generator from './generators/definition-generator';
 
-function convertPaths(paths) {
+function convertPaths(paths, opt_response_example_provider) {
   return [
     '## Endpoints',
     Object.keys(paths).map(path_key => {
-      return path_generator.generatePath(path_key, paths[path_key]);
+      return path_generator.generatePath(path_key, paths[path_key], opt_response_example_provider);
     }).join('\n\n'),
   ].join('\n\n');
 }
@@ -21,10 +21,10 @@ function convertDefinitions(definitions) {
 }
 
 const api = {
-  convertToMarkdown(swagger_spec) {
+  convertToMarkdown(swagger_spec, opt_response_example_provider) {
     const result = {
       intro: intro_generator.generateApiIntro(swagger_spec),
-      paths: convertPaths(swagger_spec.paths),
+      paths: convertPaths(swagger_spec.paths, opt_response_example_provider),
       definitions: convertDefinitions(swagger_spec.definitions),
     };
 
