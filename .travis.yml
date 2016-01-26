@@ -4,12 +4,11 @@ node_js:
 script:
 - npm run lint
 - npm test
-after_success:
-- npm run coveralls
 notifications:
   email: false
 sudo: false
 after_success:
+  - npm run coveralls
   - npm run semantic-release
 branches:
   except:
