@@ -29,10 +29,18 @@ function propertyListItem(property_key, prop, required_properties) {
 
 const api = {
 
-  createSchemaList(schema) {
+  createSchemaList(schema, item_indent = '  ') {
     if (schema.$ref) {
       const definition_name = extractDefinitionName(schema.$ref);
       return `- (${definition_name})`;
+    }
+
+    if (schema.allOf) {
+      const joined = schema.allOf.map(item => {
+        return api.createSchemaList(item, item_indent + item_indent);
+      }).join(`\n${item_indent}`);
+
+      return `- (object) All of:\n${item_indent + joined}`;
     }
 
     if (!schema.type) {
@@ -49,7 +57,6 @@ const api = {
 
     let items = [];
     if (enumerable) {
-      const item_indent = '  ';
       items = Object.keys(enumerable).map(property_key => {
         const value = propertyListItem(property_key, enumerable[property_key], schema.required);
         return item_indent + value;
