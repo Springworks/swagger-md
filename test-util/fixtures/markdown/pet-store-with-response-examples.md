@@ -140,8 +140,10 @@ unexpected error
 
 **Schema**
 
-- (object)
-
+- (object) All of:
+  - (NewPet)
+  - (object)
+    - id (integer)
 
 ### NewPet
 

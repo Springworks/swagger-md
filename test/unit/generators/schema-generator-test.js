@@ -1,4 +1,5 @@
 import generator from '../../../src/generators/schema-generator';
+import fixtures from '../../../test-util/fixtures';
 
 describe('test/unit/generators/schema-generator-test.js', () => {
 
@@ -61,6 +62,21 @@ describe('test/unit/generators/schema-generator-test.js', () => {
         const expected = '- (array)\n' +
             '  - (Pet)';
         generator.createSchemaList(schema).should.eql(expected);
+      });
+
+    });
+
+    describe('with allOf for a $ref and an object', () => {
+      let schema;
+      let markdown;
+
+      beforeEach(() => {
+        schema = fixtures.loadSwaggerSpec('schema/all-of');
+        markdown = fixtures.loadSwaggerSpecMarkdown('schema/all-of.md').trim();
+      });
+
+      it('should merge properties into one list', () => {
+        generator.createSchemaList(schema).should.eql(markdown);
       });
 
     });

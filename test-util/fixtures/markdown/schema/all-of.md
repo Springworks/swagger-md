@@ -1,0 +1,4 @@
+- (object) All of:
+  - (NewPet)
+  - (object)
+    - id (integer)
