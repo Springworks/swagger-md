@@ -1,0 +1,40 @@
+{
+  "/pets": {
+    "post": {
+      "description": "Creates a new pet",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "description": "Params for new pet",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        }
+      ],
+      "responses": {
+        "201": {
+          "description": "pet response",
+          "schema": {
+            "$ref": "#/definitions/Pet"
+          }
+        },
+        "default": {
+          "description": "unexpected error",
+          "schema": {
+            "$ref": "#/definitions/Error"
+          }
+        }
+      }
+    }
+  }
+}
