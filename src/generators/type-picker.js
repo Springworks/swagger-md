@@ -21,8 +21,13 @@ const api = {
       return generateDefinitionReference(param.$ref);
     }
 
-    if (param.schema && param.schema.$ref) {
-      return generateDefinitionReference(param.schema.$ref);
+    if (param.schema) {
+      if (param.schema.$ref) {
+        return generateDefinitionReference(param.schema.$ref);
+      }
+      else if (param.schema.type) {
+        return param.schema.type;
+      }
     }
 
     return 'unspecified type';
