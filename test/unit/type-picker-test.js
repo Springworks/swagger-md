@@ -47,6 +47,23 @@ describe('test/unit/type-picker-test.js', () => {
 
     });
 
+    describe('with param having schema with type', () => {
+      let param;
+
+      beforeEach(() => {
+        param = {
+          schema: {
+            type: 'object',
+          },
+        };
+      });
+
+      it('should return type of schema', () => {
+        type_picker.extractType(param).should.eql('object');
+      });
+
+    });
+
   });
 
 });
