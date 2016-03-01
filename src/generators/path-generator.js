@@ -45,10 +45,19 @@ function generateParameters(params) {
     return undefined;
   }
   const param_list_str = params.map(param => {
-    let value = `- ${param.in}: ${param.name} (${type_picker.extractType(param)}) - ${param.description}`;
+    const param_type = type_picker.extractType(param);
+    let value = `- ${param.in}: ${param.name} (${param_type}) - ${param.description}`;
 
     if (!param.required) {
       value += ' (optional)';
+    }
+
+    if (param.schema) {
+      const schema_definition = schema_generator.createSchemaList(param.schema);
+      const schema_definition_params = schema_definition.split('\n').slice(1).join('\n');
+      if (schema_definition_params.length) {
+        value += `\n${schema_definition_params}`;
+      }
     }
 
     return value;
