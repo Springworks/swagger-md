@@ -38,7 +38,7 @@ describe('test/unit/swagger-converter-test.js', () => {
 
         it('should return contents of a valid .md file', () => {
           const markdown_str = converter.convertToMarkdown(swagger_api_spec, responseProvider);
-          markdown_str.should.eql(swagger_api_md_str);
+          markdown_str.trim().should.eql(swagger_api_md_str);
         });
 
       });

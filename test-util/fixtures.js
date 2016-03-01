@@ -9,7 +9,7 @@ const api = {
   },
 
   loadSwaggerSpecMarkdown(filename = 'pet-store.md') {
-    return fixture_loader.loadString('markdown', filename);
+    return fixture_loader.loadString('markdown', filename).trim();
   },
 
   loadResponseExample() {
