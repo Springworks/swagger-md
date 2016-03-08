@@ -28,7 +28,7 @@ deletes a single pet based on the ID supplied
 
 **Parameters**
 
-- path: id (integer) - ID of pet to delete
+- path: id (integer)
 
 #### Response: 204
 
