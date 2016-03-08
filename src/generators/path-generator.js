@@ -46,7 +46,11 @@ function generateParameters(params) {
   }
   const param_list_str = params.map(param => {
     const param_type = type_picker.extractType(param);
-    let value = `- ${param.in}: ${param.name} (${param_type}) - ${param.description}`;
+    let value = `- ${param.in}: ${param.name} (${param_type})`;
+
+    if (param.description) {
+      value += ` - ${param.description}`;
+    }
 
     if (!param.required) {
       value += ' (optional)';
