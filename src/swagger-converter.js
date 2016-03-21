@@ -1,6 +1,7 @@
 import intro_generator from './generators/intro-generator';
 import path_generator from './generators/path-generator';
 import definition_generator from './generators/definition-generator';
+import toc_generator from './generators/toc-generator';
 
 function convertPaths(paths, opt_response_example_provider) {
   return [
@@ -31,8 +32,8 @@ const api = {
     let components = [result.intro];
     components = components.concat(result.paths);
     components = components.concat(result.definitions);
-    const joined = components.join('\n\n');
-    return `${joined}\n`;
+    const joined = `${components.join('\n\n')}\n`;
+    return toc_generator.generateTableOfContents(joined);
   },
 };
 
