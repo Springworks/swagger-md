@@ -5,28 +5,13 @@
   "private": false,
   "scripts": {
     "build": "rm -rf lib && babel src --out-dir lib",
+    "commit": "commit-wizard",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "lint": "eslint --cache .",
     "prepublish": "npm run build",
-    "test": "NODE_ENV=test istanbul cover _mocha",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "test": "NODE_ENV=test istanbul cover _mocha"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/springworks/swagger-md.git"
-  },
-  "keywords": [
-    "swagger",
-    "markdown",
-    "converter",
-    "api"
-  ],
-  "author": "Springworks (http://springworks.se)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/springworks/swagger-md/issues"
-  },
-  "homepage": "https://github.com/springworks/swagger-md#readme",
   "dependencies": {
     "toc-md": "0.2.0"
   },
@@ -45,6 +30,28 @@
     "fixture-loader": "0.2.5",
     "istanbul": "1.0.0-alpha.2",
     "mocha": "2.4.5",
+    "pre-git": "3.8.3",
     "semantic-release": "4.3.5"
-  }
+  },
+  "config": {
+    "pre-git": {
+      "commit-msg": "conventional"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Springworks/swagger-md.git"
+  },
+  "keywords": [
+    "swagger",
+    "markdown",
+    "converter",
+    "api"
+  ],
+  "author": "Springworks (http://springworks.se)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Springworks/swagger-md/issues"
+  },
+  "homepage": "https://github.com/Springworks/swagger-md#readme"
 }
