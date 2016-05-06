@@ -30,9 +30,7 @@ node_modules
 *.iml
 
 coverage
-
-/config/runtime.json
+.eslintcache
 
 # Ignore build output
 lib
-.eslintcache

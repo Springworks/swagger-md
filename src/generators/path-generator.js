@@ -34,7 +34,7 @@ function generateResponses(responses) {
 
 function generateResponseSchema(response) {
   if (!response.schema) {
-    return `N/A`;
+    return 'N/A';
   }
   return schema_generator.createSchemaList(response.schema);
 }

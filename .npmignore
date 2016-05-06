@@ -30,10 +30,9 @@ node_modules
 *.iml
 
 coverage
+.eslintcache
 
-/config/runtime.json
-
-# Ignore source and tests output
+# Ignore source and tests
 src
 test
 test-util

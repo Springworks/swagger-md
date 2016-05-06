@@ -3,5 +3,5 @@
 --recursive
 --slow 200
 --reporter spec
---compilers js:babel-core/register
+--compilers js:babel-register
 --require @springworks/test-harness
