@@ -1,4 +1,4 @@
 - (object) All of:
-  - (NewPet)
+  - [NewPet](#newpet)
   - (object)
     - id (integer)

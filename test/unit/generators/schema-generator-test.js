@@ -41,7 +41,7 @@ describe('test/unit/generators/schema-generator-test.js', () => {
       });
 
       it('should return a list with a single item; the name of the definition', () => {
-        generator.createSchemaList(schema).should.eql('- (Pet)');
+        generator.createSchemaList(schema).should.eql('- [Pet](#pet)');
       });
 
     });
@@ -60,7 +60,7 @@ describe('test/unit/generators/schema-generator-test.js', () => {
 
       it('should return a list with the properties', () => {
         const expected = '- (array)\n' +
-            '  - (Pet)';
+            '  - [Pet](#pet)';
         generator.createSchemaList(schema).should.eql(expected);
       });
 
