@@ -12,7 +12,7 @@ pet response
 
 **Schema**
 
-- (Pet)
+- [Pet](#pet)
 
 #### Response: default
 
@@ -20,7 +20,7 @@ unexpected error
 
 **Schema**
 
-- (Error)
+- [Error](#error)
 
 ### DELETE /pets/{id}
 
@@ -44,4 +44,4 @@ unexpected error
 
 **Schema**
 
-- (Error)
+- [Error](#error)

@@ -1,3 +1,4 @@
+import createMarkdownLink from 'markdown-link';
 import type_picker from './type-picker';
 
 function extractDefinitionName(ref) {
@@ -9,7 +10,7 @@ function propertyListItem(property_key, prop, required_properties) {
   let value;
 
   if (property_key === '$ref') {
-    value = `(${extractDefinitionName(prop)})`;
+    value = linkToHeader(extractDefinitionName(prop));
   }
   else {
     const type = type_picker.extractType(prop);
@@ -27,12 +28,17 @@ function propertyListItem(property_key, prop, required_properties) {
   return `- ${value}`;
 }
 
+function linkToHeader(header) {
+  const slug = header.replace(/\s/g, '-').replace(/[^a-z0-9_\-]/gi, '').toLowerCase();
+  return createMarkdownLink(header, `#${slug}`);
+}
+
 const api = {
 
   createSchemaList(schema, item_indent = '  ') {
     if (schema.$ref) {
       const definition_name = extractDefinitionName(schema.$ref);
-      return `- (${definition_name})`;
+      return `- ${linkToHeader(definition_name)}`;
     }
 
     if (schema.allOf) {

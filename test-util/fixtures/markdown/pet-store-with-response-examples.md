@@ -33,7 +33,7 @@ pet response
 **Schema**
 
 - (array)
-  - (Pet)
+  - [Pet](#pet)
 
 #### Response: default
 
@@ -41,7 +41,7 @@ unexpected error
 
 **Schema**
 
-- (Error)
+- [Error](#error)
 
 #### Example response
 
@@ -65,7 +65,7 @@ pet response
 
 **Schema**
 
-- (Pet)
+- [Pet](#pet)
 
 #### Response: default
 
@@ -73,7 +73,7 @@ unexpected error
 
 **Schema**
 
-- (Error)
+- [Error](#error)
 
 #### Example response
 
@@ -97,7 +97,7 @@ pet response
 
 **Schema**
 
-- (Pet)
+- [Pet](#pet)
 
 #### Response: default
 
@@ -105,7 +105,7 @@ unexpected error
 
 **Schema**
 
-- (Error)
+- [Error](#error)
 
 #### Example response
 
@@ -137,7 +137,7 @@ unexpected error
 
 **Schema**
 
-- (Error)
+- [Error](#error)
 
 #### Example response
 
@@ -154,7 +154,7 @@ unexpected error
 **Schema**
 
 - (object) All of:
-  - (NewPet)
+  - [NewPet](#newpet)
   - (object)
     - id (integer)
 
