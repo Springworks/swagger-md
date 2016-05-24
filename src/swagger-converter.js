@@ -26,7 +26,7 @@ const api = {
     const result = {
       intro: intro_generator.generateApiIntro(swagger_spec),
       paths: convertPaths(swagger_spec.paths, opt_response_example_provider),
-      definitions: convertDefinitions(swagger_spec.definitions),
+      definitions: convertDefinitions(swagger_spec.definitions || {}),
     };
 
     let components = [result.intro];
