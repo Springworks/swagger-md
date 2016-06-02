@@ -25,7 +25,7 @@
     "eslint": "2.11.1",
     "eslint-config-springworks": "7.0.4",
     "eslint-plugin-import": "1.8.0",
-    "eslint-plugin-mocha": "2.2.0",
+    "eslint-plugin-mocha": "3.0.0",
     "eslint-plugin-should-promised": "1.0.8",
     "eslint-plugin-springworks": "2.0.1",
     "fixture-loader": "1.0.0",
