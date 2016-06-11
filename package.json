@@ -31,7 +31,7 @@
     "fixture-loader": "1.0.0",
     "istanbul": "1.0.0-alpha.2",
     "mocha": "2.5.3",
-    "pre-git": "3.8.4",
+    "pre-git": "3.9.0",
     "semantic-release": "4.3.5"
   },
   "config": {
