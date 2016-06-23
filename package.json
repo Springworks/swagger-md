@@ -17,7 +17,7 @@
     "toc-md": "0.2.0"
   },
   "devDependencies": {
-    "@springworks/test-harness": "1.3.9",
+    "@springworks/test-harness": "1.3.10",
     "babel-cli": "6.10.1",
     "babel-eslint": "6.0.5",
     "babel-preset-es2015-node4": "2.1.0",
