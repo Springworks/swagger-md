@@ -1,24 +1,34 @@
-import toc_md from 'toc-md';
+import linkToHeader from './link-to-header';
 
+const legacy_toc_comment = '<!-- TOC -->';
+const legacy_toc_end_comment = '<!-- TOC END -->';
 
 const api = {
 
-  generateTableOfContents(md_string) {
-    let error = null;
-    let result = null;
-    let sync = false;
-    toc_md.insert(md_string, { maxDepth: 3 }, (err, str) => {
-      error = err;
-      result = str;
-      sync = true;
+  generateTableOfContents(paths_header, paths, definitions_header, definitions) {
+    const toc_array = [];
+
+    toc_array.push(legacy_toc_comment);
+
+    toc_array.push(`- ${linkToHeader(paths_header)}`);
+
+    Object.keys(paths).forEach(path => {
+      const methods = paths[path];
+      Object.keys(methods).forEach(method => {
+        const header = `${method.toUpperCase()} ${path}`;
+        toc_array.push(`  - ${linkToHeader(header)}`);
+      });
     });
-    if (!sync) {
-      throw new Error('Expected toc-md callback to be invoked synchronously');
-    }
-    if (error) {
-      throw error;
-    }
-    return result;
+
+    toc_array.push(`- ${linkToHeader(definitions_header)}`);
+
+    Object.keys(definitions).forEach(header => {
+      toc_array.push(`  - ${linkToHeader(header)}`);
+    });
+
+    toc_array.push('', legacy_toc_end_comment);
+
+    return toc_array.join('\n');
   },
 
 };
