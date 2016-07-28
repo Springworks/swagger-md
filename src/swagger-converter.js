@@ -23,17 +23,11 @@ function convertDefinitions(definitions) {
 
 const api = {
   convertToMarkdown(swagger_spec, opt_response_example_provider) {
-    const result = {
-      intro: intro_generator.generateApiIntro(swagger_spec),
-      paths: convertPaths(swagger_spec.paths, opt_response_example_provider),
-      definitions: convertDefinitions(swagger_spec.definitions || {}),
-    };
-
-    let components = [result.intro];
-    components = components.concat(result.paths);
-    components = components.concat(result.definitions);
-    const joined = `${components.join('\n\n')}\n`;
-    return toc_generator.generateTableOfContents(joined);
+    const intro = intro_generator.generateApiIntro(swagger_spec);
+    const paths = convertPaths(swagger_spec.paths, opt_response_example_provider);
+    const definitions = convertDefinitions(swagger_spec.definitions || {});
+    const markdown = `${intro}\n\n${paths}\n\n${definitions}\n`;
+    return toc_generator.generateTableOfContents(markdown);
   },
 };
 
