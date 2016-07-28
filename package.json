@@ -1,9 +1,9 @@
 {
   "name": "swagger-md",
   "description": "Converts Swagger API spec to Markdown file",
-  "main": "lib/swagger-converter.js",
+  "main": "dist/swagger-converter.js",
   "scripts": {
-    "build": "rm -rf lib && babel src --out-dir lib",
+    "build": "rm -rf dist && babel src --out-dir dist",
     "commit": "commit-wizard",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "lint": "eslint --cache .",
