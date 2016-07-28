@@ -1,5 +1,5 @@
-import createMarkdownLink from 'markdown-link';
 import type_picker from './type-picker';
+import linkToHeader from './link-to-header';
 
 function extractDefinitionName(ref) {
   const definition_name = ref.split('/').pop();
@@ -26,11 +26,6 @@ function propertyListItem(property_key, prop, required_properties) {
   }
 
   return `- ${value}`;
-}
-
-function linkToHeader(header) {
-  const slug = header.replace(/\s/g, '-').replace(/[^a-z0-9_\-]/gi, '').toLowerCase();
-  return createMarkdownLink(header, `#${slug}`);
 }
 
 const api = {

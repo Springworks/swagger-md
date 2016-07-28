@@ -1,20 +1,15 @@
 {
   "name": "swagger-md",
   "description": "Converts Swagger API spec to Markdown file",
-  "main": "lib/swagger-converter.js",
-  "private": false,
+  "main": "dist/swagger-converter.js",
   "scripts": {
-    "build": "rm -rf lib && babel src --out-dir lib",
+    "build": "rm -rf dist && babel src --out-dir dist",
     "commit": "commit-wizard",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "lint": "eslint --cache .",
     "prepublish": "npm run build",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "test": "NODE_ENV=test istanbul cover _mocha"
-  },
-  "dependencies": {
-    "markdown-link": "0.1.1",
-    "toc-md": "0.2.0"
   },
   "devDependencies": {
     "@springworks/test-harness": "1.3.13",
@@ -29,7 +24,7 @@
     "eslint-plugin-should-promised": "1.0.8",
     "eslint-plugin-springworks": "2.0.1",
     "fixture-loader": "1.0.1",
-    "istanbul": "1.0.0-alpha.2",
+    "istanbul": "1.1.0-alpha.1",
     "mocha": "2.5.3",
     "pre-git": "3.10.0",
     "semantic-release": "4.3.5"
