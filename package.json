@@ -24,7 +24,7 @@
     "eslint-plugin-should-promised": "1.0.8",
     "eslint-plugin-springworks": "2.0.1",
     "fixture-loader": "1.0.1",
-    "istanbul": "1.0.0-alpha.2",
+    "istanbul": "1.1.0-alpha.1",
     "mocha": "2.5.3",
     "pre-git": "3.10.0",
     "semantic-release": "4.3.5"
