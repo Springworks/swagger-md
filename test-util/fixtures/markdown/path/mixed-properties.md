@@ -24,7 +24,13 @@ unexpected error
 
 ### DELETE /pets/{id}
 
+> :warning: **deprecated**
+
 deletes a single pet based on the ID supplied
+
+More info on deleting pets
+
+https://example.com/more-info
 
 **Parameters**
 
