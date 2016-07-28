@@ -1,4 +1,3 @@
-import createMarkdownLink from 'markdown-link';
 import type_picker from './type-picker';
 
 function extractDefinitionName(ref) {
@@ -30,7 +29,7 @@ function propertyListItem(property_key, prop, required_properties) {
 
 function linkToHeader(header) {
   const slug = header.replace(/\s/g, '-').replace(/[^a-z0-9_\-]/gi, '').toLowerCase();
-  return createMarkdownLink(header, `#${slug}`);
+  return `[${header}](#${slug})`;
 }
 
 const api = {
