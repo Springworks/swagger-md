@@ -30,6 +30,11 @@
     },
     "delete": {
       "description": "deletes a single pet based on the ID supplied",
+      "deprecated": true,
+      "externalDocs": {
+        "description": "More info on deleting pets",
+        "url": "https://example.com/more-info"
+      },
       "operationId": "deletePet",
       "parameters": [
         {

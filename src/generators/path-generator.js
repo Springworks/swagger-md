@@ -11,7 +11,10 @@ function generateMethods(path_key, path, opt_response_example_provider) {
     const method_spec = path[method];
     return [
       `### ${method.toUpperCase()} ${path_key}`,
+      deprecationWarning(method_spec),
       method_spec.description,
+      externalDocs(method_spec, 'description'),
+      externalDocs(method_spec, 'url'),
       generateParameters(method_spec.parameters),
       generateResponses(method_spec.responses),
       generateExampleResponse(path_key, method, opt_response_example_provider),
@@ -82,6 +85,14 @@ function generateExampleResponse(path_key, method, opt_response_example_provider
     '#### Example response',
     example_response,
   ].join('\n\n');
+}
+
+function deprecationWarning(spec) {
+  return spec.deprecated ? '> :warning: **deprecated**' : null;
+}
+
+function externalDocs(spec, key) {
+  return spec.externalDocs && spec.externalDocs[key] ? spec.externalDocs[key] : null;
 }
 
 const api = {
