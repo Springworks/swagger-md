@@ -16,7 +16,8 @@ const api = {
       const methods = paths[path];
       Object.keys(methods).forEach(method => {
         const header = `${method.toUpperCase()} ${path}`;
-        toc_array.push(`  - ${linkToHeader(header)}`);
+        const deprecated = methods[method].deprecated ? ' _`deprecated`_' : '';
+        toc_array.push(`  - ${linkToHeader(header)}${deprecated}`);
       });
     });
 
