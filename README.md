@@ -16,7 +16,7 @@ import swagger_spec from './swagger-api-spec.json';
 function optionalResponseExampleProvider(path, method) {
   return [
     '```json',
-    '{ "foo": 1 },
+    '{ "foo": 1 }',
     '```',
   ].join('\n');
 } 
