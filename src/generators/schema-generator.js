@@ -13,8 +13,12 @@ function propertyListItem(property_key, prop, required_properties) {
     value = linkToHeader(extractDefinitionName(prop));
   }
   else {
-    const type = type_picker.extractType(prop);
+    let type = type_picker.extractType(prop);
     value = `${property_key}`;
+
+    if (type === 'string' && prop.enum) {
+      type = `${type}: ${prop.enum.join(', ')}`;
+    }
 
     value += ` (${type})`;
 
