@@ -81,6 +81,30 @@ describe('test/unit/generators/schema-generator-test.js', () => {
 
     });
 
+    describe('with schema having property with enum values', () => {
+      let schema;
+
+      beforeEach(() => {
+        schema = {
+          type: 'object',
+          properties: {
+            tag: {
+              type: 'string',
+              enum: ['foo', 'bar'],
+            },
+          },
+        };
+      });
+
+      it('should include enumerable values in string definition', () => {
+        const expected = '- (object)\n' +
+            '  - tag (string: foo, bar) (optional)';
+        generator.createSchemaList(schema).should.eql(expected);
+      });
+
+    });
+
+
   });
 
 });
