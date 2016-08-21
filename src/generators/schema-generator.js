@@ -14,6 +14,9 @@ function formatSchemaType(schema) {
     return linkToHeader(extractDefinitionName(schema.$ref));
   }
   const type = type_picker.extractType(schema);
+  if (schema.format) {
+    return `(${type}: ${schema.format})`;
+  }
   if (type === 'string' && schema.enum) {
     return `(${type}: ${schema.enum.join(', ')})`;
   }

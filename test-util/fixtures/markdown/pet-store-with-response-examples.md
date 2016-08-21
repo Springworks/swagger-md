@@ -158,7 +158,7 @@ unexpected error
 - (object) All of:
   - [NewPet](#newpet)
   - (object)
-    - id (integer)
+    - id (integer: int64)
 
 ### NewPet
 
@@ -173,5 +173,5 @@ unexpected error
 **Schema**
 
 - (object)
-  - code (integer)
+  - code (integer: int32)
   - message (string)
