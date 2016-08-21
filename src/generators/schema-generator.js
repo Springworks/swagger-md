@@ -2,76 +2,59 @@ import type_picker from './type-picker';
 import linkToHeader from './link-to-header';
 
 function extractDefinitionName(ref) {
-  const definition_name = ref.split('/').pop();
-  return `${definition_name}`;
+  return ref.split('/').pop();
 }
 
-function propertyListItem(property_key, prop, required_properties) {
-  let value;
-
-  if (property_key === '$ref') {
-    value = linkToHeader(extractDefinitionName(prop));
-  }
-  else {
-    let type = type_picker.extractType(prop);
-    value = `${property_key}`;
-
-    if (type === 'string' && prop.enum) {
-      type = `${type}: ${prop.enum.join(', ')}`;
-    }
-
-    value += ` (${type})`;
-
-    const is_required = required_properties && required_properties.some(required_key => required_key === property_key);
-
-    if (!is_required) {
-      value += ' (optional)';
-    }
-  }
-
-  return `- ${value}`;
+function nextIndentation(indentation) {
+  return `${indentation}  `;
 }
+
+function formatSchemaType(schema) {
+  if (schema.$ref) {
+    return linkToHeader(extractDefinitionName(schema.$ref));
+  }
+  const type = type_picker.extractType(schema);
+  if (type === 'string' && schema.enum) {
+    return `(${type}: ${schema.enum.join(', ')})`;
+  }
+  return `(${type})`;
+}
+
+function formatListItem(name, schema, indentation, is_optional) {
+  const type = formatSchemaType(schema);
+  const all_of = schema.allOf ? ' All of:' : '';
+  return `${indentation}- ${name}${name ? ' ' : ''}${type}${is_optional ? ' (optional)' : ''}${all_of}`;
+}
+
+function recursiveAppendLines(lines, name, schema, indentation, is_optional) {
+  lines.push(formatListItem(name, schema, indentation, is_optional));
+
+  if (schema.allOf) {
+    schema.allOf.forEach(sub_schema => {
+      recursiveAppendLines(lines, '', sub_schema, nextIndentation(indentation), false);
+    });
+  }
+  else if (schema.type === 'object' && schema.properties) {
+    Object.keys(schema.properties).forEach(key => {
+      const key_is_required = Array.isArray(schema.required) && schema.required.indexOf(key) >= 0;
+      recursiveAppendLines(lines, key, schema.properties[key], nextIndentation(indentation), !key_is_required);
+    });
+  }
+  else if (schema.type === 'array' && schema.items) {
+    recursiveAppendLines(lines, '', schema.items, nextIndentation(indentation), false);
+  }
+}
+
 
 const api = {
 
-  createSchemaList(schema, item_indent = '  ') {
-    if (schema.$ref) {
-      const definition_name = extractDefinitionName(schema.$ref);
-      return `- ${linkToHeader(definition_name)}`;
-    }
-
-    if (schema.allOf) {
-      const joined = schema.allOf.map(item => {
-        return api.createSchemaList(item, item_indent + item_indent);
-      }).join(`\n${item_indent}`);
-
-      return `- (object) All of:\n${item_indent + joined}`;
-    }
-
-    if (!schema.type) {
+  createSchemaList(schema) {
+    if (!schema.type && !schema.$ref) {
       return 'N/A';
     }
-
-    let enumerable;
-    if (schema.type === 'object' && schema.properties) {
-      enumerable = schema.properties;
-    }
-    else if (schema.type === 'array' && schema.items) {
-      enumerable = schema.items;
-    }
-
-    let items = [];
-    if (enumerable) {
-      items = Object.keys(enumerable).map(property_key => {
-        const value = propertyListItem(property_key, enumerable[property_key], schema.required);
-        return item_indent + value;
-      });
-    }
-
-    return [
-      `- (${schema.type})`,
-      items.join('\n'),
-    ].join('\n');
+    const lines = [];
+    recursiveAppendLines(lines, '', schema, '', false);
+    return lines.join('\n');
   },
 
 };

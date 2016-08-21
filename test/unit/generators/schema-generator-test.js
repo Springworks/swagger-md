@@ -31,6 +31,58 @@ describe('test/unit/generators/schema-generator-test.js', () => {
 
     });
 
+    describe('with a object schema having nested properties', () => {
+      let schema;
+
+      beforeEach(() => {
+        schema = {
+          type: 'object',
+          properties: {
+            p0: {
+              type: 'string',
+            },
+            p1: {
+              type: 'object',
+              properties: {
+                p10: {
+                  type: 'string',
+                },
+                p11: {
+                  type: 'string',
+                },
+              },
+            },
+            p2: {
+              type: 'object',
+              properties: {
+                p20: {
+                  type: 'string',
+                },
+                p21: {
+                  type: 'string',
+                },
+              },
+            },
+          },
+        };
+      });
+
+      it('should return a list with the properties', () => {
+        const expected = [
+          '- (object)',
+          '  - p0 (string) (optional)',
+          '  - p1 (object) (optional)',
+          '    - p10 (string) (optional)',
+          '    - p11 (string) (optional)',
+          '  - p2 (object) (optional)',
+          '    - p20 (string) (optional)',
+          '    - p21 (string) (optional)',
+        ].join('\n');
+        generator.createSchemaList(schema).should.eql(expected);
+      });
+
+    });
+
     describe('with a schema being a $ref', () => {
       let schema;
 
