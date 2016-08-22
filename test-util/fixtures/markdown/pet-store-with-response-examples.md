@@ -2,7 +2,6 @@
 
 Base URL: http://petstore.swagger.io/api
 
-<!-- TOC -->
 - [Endpoints](#endpoints)
   - [GET /pets](#get-pets)
   - [POST /pets](#post-pets)
@@ -12,8 +11,6 @@ Base URL: http://petstore.swagger.io/api
   - [Pet](#pet)
   - [NewPet](#newpet)
   - [Error](#error)
-
-<!-- TOC END -->
 
 ## Endpoints
 
@@ -158,14 +155,14 @@ unexpected error
 - (object) All of:
   - [NewPet](#newpet)
   - (object)
-    - id (integer)
+    - id (integer: int64)
 
 ### NewPet
 
 **Schema**
 
-- (object)
-  - name (string)
+- (object) A pet
+  - name (string) The pet's name
   - tag (string) (optional)
 
 ### Error
@@ -173,5 +170,5 @@ unexpected error
 **Schema**
 
 - (object)
-  - code (integer)
+  - code (integer: int32)
   - message (string)
