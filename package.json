@@ -3,13 +3,14 @@
   "description": "Converts Swagger API spec to Markdown file",
   "main": "dist/swagger-converter.js",
   "scripts": {
+    "test": "NODE_ENV=test istanbul cover _mocha",
+    "test-no-cov": "NODE_ENV=test mocha",
+    "lint": "eslint --cache .",
     "build": "rm -rf dist && babel src --out-dir dist",
     "commit": "commit-wizard",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "lint": "eslint --cache .",
     "prepublish": "npm run build",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "test": "NODE_ENV=test istanbul cover _mocha"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "devDependencies": {
     "@springworks/test-harness": "1.4.1",
