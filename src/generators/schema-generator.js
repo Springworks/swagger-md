@@ -25,8 +25,9 @@ function formatSchemaType(schema) {
 
 function formatListItem(name, schema, indentation, is_optional) {
   const type = formatSchemaType(schema);
+  const desc = schema.description ? ` ${schema.description}` : '';
   const all_of = schema.allOf ? ' All of:' : '';
-  return `${indentation}- ${name}${name ? ' ' : ''}${type}${is_optional ? ' (optional)' : ''}${all_of}`;
+  return `${indentation}- ${name}${name ? ' ' : ''}${type}${is_optional ? ' (optional)' : ''}${desc}${all_of}`;
 }
 
 function recursiveAppendLines(lines, name, schema, indentation, is_optional) {

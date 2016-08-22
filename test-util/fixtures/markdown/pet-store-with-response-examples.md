@@ -164,8 +164,8 @@ unexpected error
 
 **Schema**
 
-- (object)
-  - name (string)
+- (object) A pet
+  - name (string) The pet's name
   - tag (string) (optional)
 
 ### Error

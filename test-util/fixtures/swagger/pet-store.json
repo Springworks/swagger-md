@@ -180,12 +180,14 @@
     },
     "NewPet": {
       "type": "object",
+      "description": "A pet",
       "required": [
         "name"
       ],
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "The pet's name"
         },
         "tag": {
           "type": "string"
