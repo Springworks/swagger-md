@@ -20,7 +20,7 @@
     "babel-register": "6.11.6",
     "eslint": "3.3.1",
     "eslint-config-springworks": "7.0.6",
-    "eslint-plugin-import": "1.13.0",
+    "eslint-plugin-import": "1.14.0",
     "eslint-plugin-mocha": "4.3.0",
     "eslint-plugin-should-promised": "1.0.8",
     "eslint-plugin-springworks": "2.0.1",
