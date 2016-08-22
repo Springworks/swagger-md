@@ -2,7 +2,6 @@
 
 Base URL: http://petstore.swagger.io/api
 
-<!-- TOC -->
 - [Endpoints](#endpoints)
   - [GET /pets](#get-pets)
   - [POST /pets](#post-pets)
@@ -12,8 +11,6 @@ Base URL: http://petstore.swagger.io/api
   - [Pet](#pet)
   - [NewPet](#newpet)
   - [Error](#error)
-
-<!-- TOC END -->
 
 ## Endpoints
 

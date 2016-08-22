@@ -1,4 +1,3 @@
-<!-- TOC -->
 - [Endpoints](#endpoints)
   - [GET /pets](#get-pets)
   - [POST /pets](#post-pets)
@@ -8,5 +7,3 @@
   - [Pet](#pet)
   - [NewPet](#newpet)
   - [Error](#error)
-
-<!-- TOC END -->
