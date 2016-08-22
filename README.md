@@ -26,6 +26,12 @@ const markdown_str = swagger_md.convertToMarkdown(swagger_spec, optionalResponse
 // Use markdown_str, e.g. write to "api.md"
 ```
 
+To use the swagger-md in a CommonJS module environment the usage statement should look like:
+```
+var swagger_md = require('swagger-md').default;
+...
+```
+
 ## What can it do?
 
 See `./test-util/fixtures/markdown` and `./test-util/fixtures/swagger` for examples of a `swagger.json` converted to Markdown.
