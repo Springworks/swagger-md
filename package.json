@@ -30,6 +30,10 @@
     "pre-git": "3.10.0",
     "semantic-release": "4.3.5"
   },
+  "engines": {
+    "node": ">=4",
+    "npm": ">=2.7"
+  },
   "config": {
     "pre-git": {
       "commit-msg": "conventional"
