@@ -4,7 +4,7 @@
  */
 
 import schema_generator from './schema-generator';
-import type_picker from './type-picker';
+import createParametersTable from './request-parameters-table';
 
 function generateMethods(path_key, path, opt_response_example_provider) {
   return Object.keys(path).map(method => {
@@ -15,11 +15,26 @@ function generateMethods(path_key, path, opt_response_example_provider) {
       method_spec.description,
       externalDocs(method_spec, 'description'),
       externalDocs(method_spec, 'url'),
-      generateParameters(method_spec.parameters),
+      generateParameters(method_spec.parameters || []),
+      generateBodySchema(method_spec.parameters || []),
       generateResponses(method_spec.responses),
       generateExampleResponse(path_key, method, opt_response_example_provider),
     ].filter(Boolean).join('\n\n');
   });
+}
+
+function generateParameters(params) {
+  const table = createParametersTable(params);
+  return table && `**Parameters**\n\n${table}`;
+}
+
+function generateBodySchema(params) {
+  const body = params.filter(param => param.in === 'body')[0];
+  if (!body || !body.schema || body.schema.$ref) {
+    return undefined;
+  }
+  const list = schema_generator.createSchemaList(body.schema);
+  return `**Request Body**\n\n${list}`;
 }
 
 function generateResponses(responses) {
@@ -42,40 +57,6 @@ function generateResponseSchema(response) {
   return schema_generator.createSchemaList(response.schema);
 }
 
-
-function generateParameters(params) {
-  if (!params || !params.length) {
-    return undefined;
-  }
-  const param_list_str = params.map(param => {
-    const param_type = type_picker.extractType(param);
-    let value = `- ${param.in}: ${param.name} (${param_type})`;
-
-    if (param.description) {
-      value += ` - ${param.description}`;
-    }
-
-    if (!param.required) {
-      value += ' (optional)';
-    }
-
-    if (param.schema) {
-      const schema_definition = schema_generator.createSchemaList(param.schema);
-      const schema_definition_params = schema_definition.split('\n').slice(1).join('\n');
-      if (schema_definition_params.length) {
-        value += `\n${schema_definition_params}`;
-      }
-    }
-
-    return value;
-  }).join('\n');
-
-  return [
-    '**Parameters**',
-    param_list_str,
-  ].join('\n\n');
-}
-
 function generateExampleResponse(path_key, method, opt_response_example_provider) {
   if (!opt_response_example_provider) {
     return undefined;
@@ -94,6 +75,7 @@ function deprecationWarning(spec) {
 function externalDocs(spec, key) {
   return spec.externalDocs && spec.externalDocs[key] ? spec.externalDocs[key] : null;
 }
+
 
 const api = {
 

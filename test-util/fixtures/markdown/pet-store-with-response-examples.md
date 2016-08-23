@@ -20,8 +20,10 @@ Returns all pets from the system that the user has access to
 
 **Parameters**
 
-- query: tags (array) - tags to filter by (optional)
-- query: limit (integer) - maximum number of results to return (optional)
+| in    | name  | type                                                          | required | description                         | range           | default | unique |
+|-------|-------|---------------------------------------------------------------|----------|-------------------------------------|-----------------|---------|--------|
+| query | tags  | array, csv of string: clueless, lazy, adventurous, aggressive | false    | tags to filter by                   | `>= 0 && <= 3`  |         | true   |
+| query | limit | integer, int32                                                | false    | maximum number of results to return | `> 0 && <= 200` | `20`    |        |
 
 #### Response: 200
 
@@ -54,7 +56,9 @@ Creates a new pet in the store.  Duplicates are allowed
 
 **Parameters**
 
-- body: pet (NewPet) - Pet to add to the store
+| in   | name | type              | required | description             |
+|------|------|-------------------|----------|-------------------------|
+| body | pet  | [NewPet](#newpet) | true     | Pet to add to the store |
 
 #### Response: 200
 
@@ -86,7 +90,9 @@ Returns a user based on a single ID, if the user does not have access to the pet
 
 **Parameters**
 
-- path: id (integer) - ID of pet to fetch
+| in   | name | type           | required | description        |
+|------|------|----------------|----------|--------------------|
+| path | id   | integer, int64 | true     | ID of pet to fetch |
 
 #### Response: 200
 
@@ -120,7 +126,9 @@ deletes a single pet based on the ID supplied
 
 **Parameters**
 
-- path: id (integer) - ID of pet to delete
+| in   | name | type           | required | description         |
+|------|------|----------------|----------|---------------------|
+| path | id   | integer, int64 | true     | ID of pet to delete |
 
 #### Response: 204
 
