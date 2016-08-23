@@ -61,30 +61,26 @@ function formatParamType(param) {
 }
 
 function formatParamRange(param) {
+  return formatRange('number', param.minimum, param.maximum, param.exclusiveMinimum, param.exclusiveMaximum) ||
+         formatRange('length', param.minLength, param.maxLength, false, false) ||
+         formatRange('items', param.minItems, param.maxItems, false, false);
+}
+
+function formatRange(type, min, max, exclusive_min, exclusive_max) {
+  const has_min = typeof min === 'number';
+  const has_max = typeof max === 'number';
+  if (!has_min && !has_max) {
+    return undefined;
+  }
   let r = '';
-  if (typeof param.minimum === 'number') {
-    r = `${param.exclusiveMinimum ? '>' : '>='} ${param.minimum}`;
+  if (has_min) {
+    r = `${min} ${exclusive_min ? '<' : '<='} `;
   }
-  if (typeof param.maximum === 'number') {
-    r += `${r ? ' && ' : ''}${param.exclusiveMaximum ? '<' : '<='} ${param.maximum}`;
+  r += type;
+  if (has_max) {
+    r += ` ${exclusive_max ? '<' : '<='} ${max}`;
   }
-  if (!r) {
-    if (typeof param.minLength === 'number') {
-      r = `>= ${param.minLength}`;
-    }
-    if (typeof param.maxLength === 'number') {
-      r += `${r ? ' && ' : ''}<= ${param.maxLength}`;
-    }
-  }
-  if (!r) {
-    if (typeof param.minItems === 'number') {
-      r = `>= ${param.minItems}`;
-    }
-    if (typeof param.maxItems === 'number') {
-      r += `${r ? ' && ' : ''}<= ${param.maxItems}`;
-    }
-  }
-  return r ? `\`${r}\`` : '';
+  return `\`${r}\``;
 }
 
 function formatCode(value, as_json) {

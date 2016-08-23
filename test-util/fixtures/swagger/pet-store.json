@@ -63,6 +63,15 @@
             "exclusiveMinimum": true,
             "maximum": 200,
             "default": 20
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "results offset",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
           }
         ],
         "responses": {
