@@ -4,7 +4,13 @@ Creates a new pet
 
 **Parameters**
 
-- body: body (object) - Params for new pet
+| in   | name | required | description        |
+|------|------|----------|--------------------|
+| body | body | true     | Params for new pet |
+
+**Request Body**
+
+- (object)
   - name (string)
 
 #### Response: 201

@@ -4,7 +4,9 @@ Returns a user based on a single ID, if the user does not have access to the pet
 
 **Parameters**
 
-- path: id (integer) - ID of pet to fetch
+| in   | name | type           | required | description        |
+|------|------|----------------|----------|--------------------|
+| path | id   | integer, int64 | true     | ID of pet to fetch |
 
 #### Response: 200
 
@@ -34,7 +36,9 @@ https://example.com/more-info
 
 **Parameters**
 
-- path: id (integer)
+| in   | name | type           | required |
+|------|------|----------------|----------|
+| path | id   | integer, int64 | true     |
 
 #### Response: 204
 

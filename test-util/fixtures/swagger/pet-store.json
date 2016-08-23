@@ -40,8 +40,17 @@
             "type": "array",
             "collectionFormat": "csv",
             "items": {
-              "type": "string"
-            }
+              "type": "string",
+              "enum": [
+                "clueless",
+                "lazy",
+                "adventurous",
+                "aggressive"
+              ]
+            },
+            "minItems": 0,
+            "maxItems": 3,
+            "uniqueItems": true
           },
           {
             "name": "limit",
@@ -49,7 +58,11 @@
             "description": "maximum number of results to return",
             "required": false,
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "minimum": 0,
+            "exclusiveMinimum": true,
+            "maximum": 200,
+            "default": 20
           }
         ],
         "responses": {
