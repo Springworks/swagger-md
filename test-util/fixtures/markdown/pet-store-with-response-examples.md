@@ -20,10 +20,11 @@ Returns all pets from the system that the user has access to
 
 **Parameters**
 
-| in    | name  | type                                                          | required | description                         | range           | default | unique |
-|-------|-------|---------------------------------------------------------------|----------|-------------------------------------|-----------------|---------|--------|
-| query | tags  | array, csv of string: clueless, lazy, adventurous, aggressive | false    | tags to filter by                   | `>= 0 && <= 3`  |         | true   |
-| query | limit | integer, int32                                                | false    | maximum number of results to return | `> 0 && <= 200` | `20`    |        |
+| in    | name   | type                                                          | required | description                         | range               | default | unique |
+|-------|--------|---------------------------------------------------------------|----------|-------------------------------------|---------------------|---------|--------|
+| query | tags   | array, csv of string: clueless, lazy, adventurous, aggressive | false    | tags to filter by                   | `0 <= items <= 3`   |         | true   |
+| query | limit  | integer, int32                                                | false    | maximum number of results to return | `0 < number <= 200` | `20`    |        |
+| query | offset | integer, int32                                                | false    | results offset                      | `0 <= number`       |         |        |
 
 #### Response: 200
 
