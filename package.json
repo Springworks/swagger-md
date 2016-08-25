@@ -13,7 +13,7 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "devDependencies": {
-    "@springworks/test-harness": "1.4.2",
+    "@springworks/test-harness": "1.4.3",
     "babel-cli": "6.14.0",
     "babel-eslint": "6.1.2",
     "babel-preset-es2015-node4": "2.1.0",
