@@ -3,6 +3,7 @@ language: node_js
 node_js:
   - '4'
   - '6'
+  - '7'
 cache:
   directories:
     - node_modules
@@ -15,9 +16,6 @@ script:
   - npm test
 after_success:
   - npm run coveralls
-  - 'curl -Lo travis_after_all.py https://git.io/travis_after_all'
-  - python travis_after_all.py
-  - export $(cat .to_export_back) &> /dev/null
   - npm run semantic-release
 branches:
   except:
