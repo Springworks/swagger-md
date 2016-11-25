@@ -26,7 +26,7 @@
     "eslint-plugin-springworks": "2.0.1",
     "fixture-loader": "1.0.1",
     "istanbul": "1.1.0-alpha.1",
-    "mocha": "3.1.2",
+    "mocha": "3.2.0",
     "pre-git": "3.11.1",
     "semantic-release": "6.3.2"
   },
