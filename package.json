@@ -19,7 +19,7 @@
     "babel-preset-es2015-node4": "2.1.0",
     "babel-register": "6.18.0",
     "eslint": "3.11.0",
-    "eslint-config-springworks": "7.0.6",
+    "eslint-config-springworks": "7.0.7",
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-mocha": "4.7.0",
     "eslint-plugin-should-promised": "2.0.0",
