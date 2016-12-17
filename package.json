@@ -16,7 +16,7 @@
     "@springworks/test-harness": "1.5.2",
     "babel-cli": "6.18.0",
     "babel-eslint": "7.1.1",
-    "babel-preset-es2015-node4": "2.1.0",
+    "babel-preset-es2015-node4": "2.1.1",
     "babel-register": "6.18.0",
     "eslint": "3.12.1",
     "eslint-config-springworks": "7.0.7",
