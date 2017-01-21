@@ -1,4 +1,6 @@
 # swagger-md
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Springworks/swagger-md.svg)](https://greenkeeper.io/)
 Converts [Swagger API](http://swagger.io) spec to [Markdown format](https://help.github.com/articles/markdown-basics/). 
 
 ## Usage
