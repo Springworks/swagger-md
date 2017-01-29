@@ -15,8 +15,9 @@ describe('test/unit/swagger-converter-test.js', () => {
       describe('omitting response_provider function', () => {
 
         it('should not include examples in result', () => {
-          const markdown_str = converter.convertToMarkdown(swagger_api_spec, null);
-          markdown_str.should.not.match(/Example response/);
+          return converter.convertToMarkdown(swagger_api_spec, null).then(markdown_str => {
+            markdown_str.should.not.match(/Example response/);
+          });
         });
 
       });
@@ -37,8 +38,9 @@ describe('test/unit/swagger-converter-test.js', () => {
         });
 
         it('should return contents of a valid .md file', () => {
-          const markdown_str = converter.convertToMarkdown(swagger_api_spec, responseProvider);
-          markdown_str.trim().should.eql(swagger_api_md_str);
+          return converter.convertToMarkdown(swagger_api_spec, responseProvider).then(markdown_str => {
+            markdown_str.trim().should.eql(swagger_api_md_str);
+          });
         });
 
       });

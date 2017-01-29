@@ -26,11 +26,13 @@ function convertDefinitions(definitions) {
 
 const api = {
   convertToMarkdown(swagger_spec, opt_response_example_provider) {
-    const intro = intro_generator.generateApiIntro(swagger_spec);
-    const toc = toc_generator.generateTableOfContents(paths_header, swagger_spec.paths, definitions_header, swagger_spec.definitions || {});
-    const paths = convertPaths(swagger_spec.paths, opt_response_example_provider);
-    const definitions = convertDefinitions(swagger_spec.definitions || {});
-    return `${intro}\n\n${toc}\n\n${paths}\n\n${definitions}\n`;
+    return Promise.resolve().then(() => {
+      const intro = intro_generator.generateApiIntro(swagger_spec);
+      const toc = toc_generator.generateTableOfContents(paths_header, swagger_spec.paths, definitions_header, swagger_spec.definitions || {});
+      const paths = convertPaths(swagger_spec.paths, opt_response_example_provider);
+      const definitions = convertDefinitions(swagger_spec.definitions || {});
+      return `${intro}\n\n${toc}\n\n${paths}\n\n${definitions}\n`;
+    });
   },
 };
 

@@ -24,9 +24,9 @@ function optionalResponseExampleProvider(path, method) {
   ].join('\n');
 } 
 
-const markdown_str = swagger_md.convertToMarkdown(swagger_spec, optionalResponseExampleProvider);
-
-// Use markdown_str, e.g. write to "api.md"
+swagger_md.convertToMarkdown(swagger_spec, optionalResponseExampleProvider).then(markdown_str => {
+  // Use markdown_str, e.g. write to "api.md"
+});
 ```
 
 To use the swagger-md in a CommonJS module environment the usage statement should look like:
