@@ -1,10 +1,8 @@
 import intro_generator from './generators/intro-generator';
 import path_generator from './generators/path-generator';
-import definition_generator from './generators/definition-generator';
 import toc_generator from './generators/toc-generator';
 
 const paths_header = 'Endpoints';
-const definitions_header = 'Definitions';
 
 function convertPaths(paths, response_example_provider) {
   return [
@@ -15,24 +13,14 @@ function convertPaths(paths, response_example_provider) {
   ].join('\n\n');
 }
 
-function convertDefinitions(definitions) {
-  return [
-    `## ${definitions_header}`,
-    Object.keys(definitions).map(definition_key => {
-      return definition_generator.generateDefinition(definition_key, definitions[definition_key]);
-    }).join('\n\n'),
-  ].join('\n\n');
-}
-
 const api = {
   convertToMarkdown(swagger_spec, options) {
     return Promise.resolve().then(() => {
       const opts = options || {};
       const intro = intro_generator.generateApiIntro(swagger_spec);
-      const toc = toc_generator.generateTableOfContents(paths_header, swagger_spec.paths, definitions_header, swagger_spec.definitions || {});
+      const toc = toc_generator.generateTableOfContents(paths_header, swagger_spec.paths);
       const paths = convertPaths(swagger_spec.paths, opts.response_example_provider);
-      const definitions = convertDefinitions(swagger_spec.definitions || {});
-      return `${intro}\n\n${toc}\n\n${paths}\n\n${definitions}\n`;
+      return `${intro}\n\n${toc}\n\n${paths}\n`;
     });
   },
 };

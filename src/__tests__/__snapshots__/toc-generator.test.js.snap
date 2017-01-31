@@ -3,9 +3,5 @@ exports[`generateTableOfContents should return the TOC section 1`] = `
   - [GET /pets](#get-pets)
   - [POST /pets](#post-pets)
   - [GET /pets/{id}](#get-petsid)
-  - [DELETE /pets/{id}](#delete-petsid) _\`deprecated\`_
-- [Definitions](#definitions)
-  - [Pet](#pet)
-  - [NewPet](#newpet)
-  - [Error](#error)"
+  - [DELETE /pets/{id}](#delete-petsid) _\`deprecated\`_"
 `;

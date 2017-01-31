@@ -8,10 +8,6 @@ Base URL: http://petstore.swagger.io/api
   - [POST /pets](#post-pets)
   - [GET /pets/{id}](#get-petsid)
   - [DELETE /pets/{id}](#delete-petsid) _\`deprecated\`_
-- [Definitions](#definitions)
-  - [Pet](#pet)
-  - [NewPet](#newpet)
-  - [Error](#error)
 
 ## Endpoints
 
@@ -155,32 +151,5 @@ unexpected error
   \"foo\": \"bar\"
 }
 \`\`\`
-
-## Definitions
-
-### Pet
-
-**Schema**
-
-- (object) All of:
-  - [NewPet](#newpet)
-  - (object)
-    - id (integer: int64)
-
-### NewPet
-
-**Schema**
-
-- (object) A pet
-  - name (string) The pet\'s name
-  - tag (string) (optional)
-
-### Error
-
-**Schema**
-
-- (object)
-  - code (integer: int32)
-  - message (string)
 "
 `;
