@@ -16,14 +16,13 @@ describe('test/unit/swagger-converter-test.js', () => {
 
         it('should not include examples in result', () => {
           return converter.convertToMarkdown(swagger_api_spec, null).then(markdown_str => {
-            markdown_str.should.not.match(/Example response/);
+            expect(markdown_str).not.toMatch('Example response');
           });
         });
 
       });
 
       describe('providing a response_example_provider function, to generate examples for each response', () => {
-        let swagger_api_md_str;
 
         function response_example_provider() {
           return [
@@ -33,13 +32,9 @@ describe('test/unit/swagger-converter-test.js', () => {
           ].join('\n');
         }
 
-        beforeEach(() => {
-          swagger_api_md_str = fixtures.loadSwaggerSpecMarkdown('pet-store-with-response-examples.md');
-        });
-
         it('should return contents of a valid .md file', () => {
           return converter.convertToMarkdown(swagger_api_spec, { response_example_provider }).then(markdown_str => {
-            markdown_str.trim().should.eql(swagger_api_md_str);
+            expect(markdown_str).toMatchSnapshot();
           });
         });
 

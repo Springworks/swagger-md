@@ -1,4 +1,0 @@
-- (object) All of:
-  - [NewPet](#newpet)
-  - (object)
-    - id (integer: int64)

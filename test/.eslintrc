@@ -1,13 +1,7 @@
 {
   "extends": "springworks/mocha",
-  "globals": {
-    "should": false,
-    "sinon": false
-  },
-  "plugins": [
-    "should-promised"
-  ],
-  "rules": {
-    "should-promised/return-promise": 2
+  "env": {
+    "mocha": false,
+    "jest": true
   }
 }

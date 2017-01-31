@@ -8,10 +8,6 @@ const api = {
     return fixture_loader.loadParsedJson('swagger', filename);
   },
 
-  loadSwaggerSpecMarkdown(filename = 'pet-store.md') {
-    return fixture_loader.loadString('markdown', filename).trim();
-  },
-
   loadResponseExample() {
     const parsed_json = fixture_loader.loadParsedJson('.', 'response-example');
     const stringified = JSON.stringify(parsed_json, null, 2);

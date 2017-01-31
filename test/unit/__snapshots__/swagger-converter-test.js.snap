@@ -1,4 +1,5 @@
-# Swagger Petstore, version 1.0.0
+exports[`test/unit/swagger-converter-test.js convertToMarkdown with a valid, parsed Swagger spec providing a response_example_provider function, to generate examples for each response should return contents of a valid .md file 1`] = `
+"# Swagger Petstore, version 1.0.0
 
 Base URL: http://petstore.swagger.io/api
 
@@ -6,7 +7,7 @@ Base URL: http://petstore.swagger.io/api
   - [GET /pets](#get-pets)
   - [POST /pets](#post-pets)
   - [GET /pets/{id}](#get-petsid)
-  - [DELETE /pets/{id}](#delete-petsid) _`deprecated`_
+  - [DELETE /pets/{id}](#delete-petsid) _\`deprecated\`_
 - [Definitions](#definitions)
   - [Pet](#pet)
   - [NewPet](#newpet)
@@ -22,9 +23,9 @@ Returns all pets from the system that the user has access to
 
 | in    | name   | type                                                          | required | description                         | range               | default | unique |
 |-------|--------|---------------------------------------------------------------|----------|-------------------------------------|---------------------|---------|--------|
-| query | tags   | array, csv of string: clueless, lazy, adventurous, aggressive | false    | tags to filter by                   | `0 <= items <= 3`   |         | true   |
-| query | limit  | integer, int32                                                | false    | maximum number of results to return | `0 < number <= 200` | `20`    |        |
-| query | offset | integer, int32                                                | false    | results offset                      | `0 <= number`       |         |        |
+| query | tags   | array, csv of string: clueless, lazy, adventurous, aggressive | false    | tags to filter by                   | \`0 <= items <= 3\`   |         | true   |
+| query | limit  | integer, int32                                                | false    | maximum number of results to return | \`0 < number <= 200\` | \`20\`    |        |
+| query | offset | integer, int32                                                | false    | results offset                      | \`0 <= number\`       |         |        |
 
 #### Response: 200
 
@@ -45,11 +46,11 @@ unexpected error
 
 #### Example response
 
-```json
+\`\`\`json
 {
-  "foo": "bar"
+  \"foo\": \"bar\"
 }
-```
+\`\`\`
 
 ### POST /pets
 
@@ -79,11 +80,11 @@ unexpected error
 
 #### Example response
 
-```json
+\`\`\`json
 {
-  "foo": "bar"
+  \"foo\": \"bar\"
 }
-```
+\`\`\`
 
 ### GET /pets/{id}
 
@@ -113,11 +114,11 @@ unexpected error
 
 #### Example response
 
-```json
+\`\`\`json
 {
-  "foo": "bar"
+  \"foo\": \"bar\"
 }
-```
+\`\`\`
 
 ### DELETE /pets/{id}
 
@@ -149,11 +150,11 @@ unexpected error
 
 #### Example response
 
-```json
+\`\`\`json
 {
-  "foo": "bar"
+  \"foo\": \"bar\"
 }
-```
+\`\`\`
 
 ## Definitions
 
@@ -171,7 +172,7 @@ unexpected error
 **Schema**
 
 - (object) A pet
-  - name (string) The pet's name
+  - name (string) The pet\'s name
   - tag (string) (optional)
 
 ### Error
@@ -181,3 +182,5 @@ unexpected error
 - (object)
   - code (integer: int32)
   - message (string)
+"
+`;

@@ -1,0 +1,35 @@
+exports[`test/unit/generators/schema-generator-test.js createSchemaList with a array schema of $refs should return a list with the properties 1`] = `
+"- (array)
+  - [Pet](#pet)"
+`;
+
+exports[`test/unit/generators/schema-generator-test.js createSchemaList with a object schema having nested properties should return a list with the properties 1`] = `
+"- (object)
+  - p0 (string) (optional)
+  - p1 (object) (optional)
+    - p10 (string) (optional)
+    - p11 (string) (optional)
+  - p2 (object) (optional)
+    - p20 (string) (optional)
+    - p21 (string) (optional)"
+`;
+
+exports[`test/unit/generators/schema-generator-test.js createSchemaList with a object schema having properties should return a list with the properties 1`] = `
+"- (object)
+  - name (string) (optional)
+  - tag (string) (optional)"
+`;
+
+exports[`test/unit/generators/schema-generator-test.js createSchemaList with a schema being a $ref should return a list with a single item; the name of the definition 1`] = `"- [Pet](#pet)"`;
+
+exports[`test/unit/generators/schema-generator-test.js createSchemaList with allOf for a $ref and an object should merge properties into one list 1`] = `
+"- (object) All of:
+  - [NewPet](#newpet)
+  - (object)
+    - id (integer: int64)"
+`;
+
+exports[`test/unit/generators/schema-generator-test.js createSchemaList with schema having property with enum values should include enumerable values in string definition 1`] = `
+"- (object)
+  - tag (string: foo, bar) (optional)"
+`;

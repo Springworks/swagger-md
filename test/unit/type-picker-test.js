@@ -5,61 +5,43 @@ describe('test/unit/type-picker-test.js', () => {
   describe('extractType', () => {
 
     describe('with param having .type', () => {
-      let param;
-
-      beforeEach(() => {
-        param = { type: 'string' };
-      });
 
       it('should return value of .type', () => {
-        type_picker.extractType(param).should.eql(param.type);
+        const param = { type: 'string' };
+        expect(type_picker.extractType(param)).toBe('string');
       });
 
     });
 
     describe('with param having $ref', () => {
-      let param;
-
-      beforeEach(() => {
-        param = { $ref: '#/definitions/Error' };
-      });
 
       it('should return definition name', () => {
-        type_picker.extractType(param).should.eql('Error');
+        const param = { $ref: '#/definitions/Error' };
+        expect(type_picker.extractType(param)).toBe('Error');
       });
 
     });
 
     describe('with param having schema with $ref', () => {
-      let param;
 
-      beforeEach(() => {
-        param = {
+      it('should return definition name', () => {
+        const param = {
           schema: {
             $ref: '#/definitions/Error',
           },
         };
-      });
-
-      it('should return definition name', () => {
-        type_picker.extractType(param).should.eql('Error');
+        expect(type_picker.extractType(param)).toBe('Error');
       });
 
     });
 
     describe('with param having schema with type', () => {
-      let param;
-
-      beforeEach(() => {
-        param = {
-          schema: {
-            type: 'object',
-          },
-        };
-      });
 
       it('should return type of schema', () => {
-        type_picker.extractType(param).should.eql('object');
+        const param = {
+          schema: { type: 'object' },
+        };
+        expect(type_picker.extractType(param)).toBe('object');
       });
 
     });
