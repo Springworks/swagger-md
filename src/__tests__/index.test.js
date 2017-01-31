@@ -1,5 +1,5 @@
 import fixtures from '../../test-util/fixtures';
-import converter from '../../src/index';
+import converter from '../index';
 
 describe('convertToMarkdown', () => {
 

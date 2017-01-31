@@ -1,5 +1,5 @@
 import fixtures from '../../test-util/fixtures';
-import generator from '../../src/generators/path-generator';
+import generator from '../generators/path-generator';
 
 describe('generatePath', () => {
 

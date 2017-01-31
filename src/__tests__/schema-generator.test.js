@@ -1,5 +1,5 @@
-import generator from '../../../src/generators/schema-generator';
-import fixtures from '../../../test-util/fixtures';
+import generator from '../generators/schema-generator';
+import fixtures from '../../test-util/fixtures';
 
 describe('createSchemaList', () => {
 

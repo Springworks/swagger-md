@@ -1,4 +1,4 @@
-import type_picker from '../../src/generators/type-picker';
+import type_picker from '../generators/type-picker';
 
 describe('extractType', () => {
 

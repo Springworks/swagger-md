@@ -1,5 +1,5 @@
 import fixtures from '../../test-util/fixtures';
-import generator from '../../src/generators/toc-generator';
+import generator from '../generators/toc-generator';
 
 describe('generateTableOfContents', () => {
 

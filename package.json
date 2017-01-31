@@ -10,7 +10,7 @@
     "test-cov": "jest --coverage",
     "test-watch": "jest --watch",
     "lint": "eslint --cache .",
-    "build": "rm -rf dist && babel src --out-dir dist",
+    "build": "rm -rf dist && babel src --out-dir dist --ignore __tests__",
     "commit": "commit-wizard",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prepublish": "npm run build",
@@ -35,11 +35,7 @@
     ]
   },
   "jest": {
-    "testEnvironment": "node",
-    "testPathDirs": [
-      "test"
-    ],
-    "testRegex": ".*-test\\.js$"
+    "testEnvironment": "node"
   },
   "engines": {
     "node": ">=4",

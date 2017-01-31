@@ -1,4 +1,4 @@
-import createTable from '../../src/generators/md-table';
+import createTable from '../generators/md-table';
 
 describe('createTable', () => {
 
