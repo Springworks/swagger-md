@@ -26,19 +26,13 @@ function formatSchemaType(schema) {
 function formatListItem(name, schema, indentation, is_optional) {
   const type = formatSchemaType(schema);
   const desc = schema.description ? ` ${schema.description}` : '';
-  const all_of = schema.allOf ? ' All of:' : '';
-  return `${indentation}- ${name}${name ? ' ' : ''}${type}${is_optional ? ' (optional)' : ''}${desc}${all_of}`;
+  return `${indentation}- ${name}${name ? ' ' : ''}${type}${is_optional ? ' (optional)' : ''}${desc}`;
 }
 
 function recursiveAppendLines(lines, name, schema, indentation, is_optional) {
   lines.push(formatListItem(name, schema, indentation, is_optional));
 
-  if (schema.allOf) {
-    schema.allOf.forEach(sub_schema => {
-      recursiveAppendLines(lines, '', sub_schema, nextIndentation(indentation), false);
-    });
-  }
-  else if (schema.type === 'object' && schema.properties) {
+  if (schema.type === 'object' && schema.properties) {
     Object.keys(schema.properties).forEach(key => {
       const key_is_required = Array.isArray(schema.required) && schema.required.indexOf(key) >= 0;
       recursiveAppendLines(lines, key, schema.properties[key], nextIndentation(indentation), !key_is_required);

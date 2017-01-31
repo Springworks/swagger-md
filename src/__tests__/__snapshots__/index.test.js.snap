@@ -30,7 +30,10 @@ pet response
 **Schema**
 
 - (array)
-  - [Pet](#pet)
+  - (object) A pet
+    - name (string) The pet\'s name
+    - tag (string) (optional)
+    - id (integer: int64)
 
 #### Response: default
 
@@ -38,7 +41,9 @@ unexpected error
 
 **Schema**
 
-- [Error](#error)
+- (object)
+  - code (integer: int32)
+  - message (string)
 
 #### Example response
 
@@ -54,9 +59,15 @@ Creates a new pet in the store.  Duplicates are allowed
 
 **Parameters**
 
-| in   | name | type              | required | description             |
-|------|------|-------------------|----------|-------------------------|
-| body | pet  | [NewPet](#newpet) | true     | Pet to add to the store |
+| in   | name | required | description             |
+|------|------|----------|-------------------------|
+| body | pet  | true     | Pet to add to the store |
+
+**Request Body**
+
+- (object) A pet
+  - name (string) The pet\'s name
+  - tag (string) (optional)
 
 #### Response: 200
 
@@ -64,7 +75,10 @@ pet response
 
 **Schema**
 
-- [Pet](#pet)
+- (object) A pet
+  - name (string) The pet\'s name
+  - tag (string) (optional)
+  - id (integer: int64)
 
 #### Response: default
 
@@ -72,7 +86,9 @@ unexpected error
 
 **Schema**
 
-- [Error](#error)
+- (object)
+  - code (integer: int32)
+  - message (string)
 
 #### Example response
 
@@ -98,7 +114,10 @@ pet response
 
 **Schema**
 
-- [Pet](#pet)
+- (object) A pet
+  - name (string) The pet\'s name
+  - tag (string) (optional)
+  - id (integer: int64)
 
 #### Response: default
 
@@ -106,7 +125,9 @@ unexpected error
 
 **Schema**
 
-- [Error](#error)
+- (object)
+  - code (integer: int32)
+  - message (string)
 
 #### Example response
 
@@ -142,7 +163,9 @@ unexpected error
 
 **Schema**
 
-- [Error](#error)
+- (object)
+  - code (integer: int32)
+  - message (string)
 
 #### Example response
 
