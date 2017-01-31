@@ -3,5 +3,8 @@
   "env": {
     "mocha": false,
     "jest": true
+  },
+  "rules": {
+    "springworks/top-describe-path": 0
   }
 }

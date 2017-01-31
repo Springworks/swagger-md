@@ -1,4 +1,4 @@
-exports[`test/unit/path-generator-test.js generatePath with an API spec having mixed properties; some defined, some omitted should render markdown and omit unspecified data, e.g. descriptions, schemas 1`] = `
+exports[`generatePath with an API spec having mixed properties; some defined, some omitted should render markdown and omit unspecified data, e.g. descriptions, schemas 1`] = `
 "### GET /pets/{id}
 
 Returns a user based on a single ID, if the user does not have access to the pet
@@ -58,7 +58,7 @@ unexpected error
 - [Error](#error)"
 `;
 
-exports[`test/unit/path-generator-test.js generatePath with body parameter having a schema should include schema definition in result 1`] = `
+exports[`generatePath with body parameter having a schema should include schema definition in result 1`] = `
 "### POST /pets
 
 Creates a new pet

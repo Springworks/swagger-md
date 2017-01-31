@@ -1,4 +1,4 @@
-exports[`test/unit/swagger-converter-test.js convertToMarkdown with a valid, parsed Swagger spec providing a response_example_provider function, to generate examples for each response should return contents of a valid .md file 1`] = `
+exports[`convertToMarkdown with a valid, parsed Swagger spec providing a response_example_provider function, to generate examples for each response should return contents of a valid .md file 1`] = `
 "# Swagger Petstore, version 1.0.0
 
 Base URL: http://petstore.swagger.io/api
