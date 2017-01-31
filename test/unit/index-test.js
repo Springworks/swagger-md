@@ -1,5 +1,5 @@
 import fixtures from '../../test-util/fixtures';
-import converter from '../../src/swagger-converter';
+import converter from '../../src/index';
 
 describe('test/unit/swagger-converter-test.js', () => {
 

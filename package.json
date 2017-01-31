@@ -1,7 +1,7 @@
 {
   "name": "swagger-md",
   "description": "Converts Swagger API spec to Markdown file",
-  "main": "dist/swagger-converter.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "jest",
     "test-cov": "jest --coverage",
