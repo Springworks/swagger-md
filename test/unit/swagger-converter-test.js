@@ -9,7 +9,7 @@ describe('test/unit/swagger-converter-test.js', () => {
       let swagger_api_spec;
 
       beforeEach(() => {
-        swagger_api_spec = fixtures.loadSwaggerSpec();
+        swagger_api_spec = fixtures.loadSwaggerSpec('pet-store');
       });
 
       describe('omitting response_provider function', () => {

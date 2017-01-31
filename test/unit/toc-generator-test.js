@@ -8,7 +8,7 @@ describe('test/unit/toc-generator-test.js', () => {
   let definitions;
 
   beforeEach(() => {
-    const swagger_api_spec = fixtures.loadSwaggerSpec();
+    const swagger_api_spec = fixtures.loadSwaggerSpec('pet-store');
     paths = swagger_api_spec.paths;
     definitions = swagger_api_spec.definitions;
   });
