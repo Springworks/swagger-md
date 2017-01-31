@@ -24,15 +24,15 @@ describe('test/unit/swagger-converter-test.js', () => {
 
       describe('providing a response_example_provider function, to generate examples for each response', () => {
 
-        function response_example_provider() {
-          return [
-            '```json',
-            fixtures.loadResponseExample(),
-            '```',
-          ].join('\n');
-        }
-
         it('should return contents of a valid .md file', () => {
+          function response_example_provider() {
+            return [
+              '```json',
+              JSON.stringify({ foo: 'bar' }, null, 2),
+              '```',
+            ].join('\n');
+          }
+
           return converter.convertToMarkdown(swagger_api_spec, { response_example_provider }).then(markdown_str => {
             expect(markdown_str).toMatchSnapshot();
           });
