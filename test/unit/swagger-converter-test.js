@@ -22,10 +22,10 @@ describe('test/unit/swagger-converter-test.js', () => {
 
       });
 
-      describe('providing a response_provider function, to generate examples for each response', () => {
+      describe('providing a response_example_provider function, to generate examples for each response', () => {
         let swagger_api_md_str;
 
-        function responseProvider() {
+        function response_example_provider() {
           return [
             '```json',
             fixtures.loadResponseExample(),
@@ -38,7 +38,7 @@ describe('test/unit/swagger-converter-test.js', () => {
         });
 
         it('should return contents of a valid .md file', () => {
-          return converter.convertToMarkdown(swagger_api_spec, responseProvider).then(markdown_str => {
+          return converter.convertToMarkdown(swagger_api_spec, { response_example_provider }).then(markdown_str => {
             markdown_str.trim().should.eql(swagger_api_md_str);
           });
         });

@@ -16,7 +16,7 @@ Convert Swagger API spec to Markdown format:
 import swagger_md from 'swagger-md';
 import swagger_spec from './swagger-api-spec.json';
 
-function optionalResponseExampleProvider(path, method) {
+function responseExampleProvider(path, method) {
   return [
     '```json',
     '{ "foo": 1 }',
@@ -24,7 +24,7 @@ function optionalResponseExampleProvider(path, method) {
   ].join('\n');
 } 
 
-swagger_md.convertToMarkdown(swagger_spec, optionalResponseExampleProvider).then(markdown_str => {
+swagger_md.convertToMarkdown(swagger_spec, { response_example_provider: responseExampleProvider }).then(markdown_str => {
   // Use markdown_str, e.g. write to "api.md"
 });
 ```

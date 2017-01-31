@@ -6,11 +6,11 @@ import toc_generator from './generators/toc-generator';
 const paths_header = 'Endpoints';
 const definitions_header = 'Definitions';
 
-function convertPaths(paths, opt_response_example_provider) {
+function convertPaths(paths, response_example_provider) {
   return [
     `## ${paths_header}`,
     Object.keys(paths).map(path_key => {
-      return path_generator.generatePath(path_key, paths[path_key], opt_response_example_provider);
+      return path_generator.generatePath(path_key, paths[path_key], response_example_provider);
     }).join('\n\n'),
   ].join('\n\n');
 }
@@ -25,11 +25,12 @@ function convertDefinitions(definitions) {
 }
 
 const api = {
-  convertToMarkdown(swagger_spec, opt_response_example_provider) {
+  convertToMarkdown(swagger_spec, options) {
     return Promise.resolve().then(() => {
+      const opts = options || {};
       const intro = intro_generator.generateApiIntro(swagger_spec);
       const toc = toc_generator.generateTableOfContents(paths_header, swagger_spec.paths, definitions_header, swagger_spec.definitions || {});
-      const paths = convertPaths(swagger_spec.paths, opt_response_example_provider);
+      const paths = convertPaths(swagger_spec.paths, opts.response_example_provider);
       const definitions = convertDefinitions(swagger_spec.definitions || {});
       return `${intro}\n\n${toc}\n\n${paths}\n\n${definitions}\n`;
     });
