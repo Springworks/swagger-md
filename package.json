@@ -29,6 +29,11 @@
     "jest": "18.1.0",
     "semantic-release": "6.3.2"
   },
+  "babel": {
+    "presets": [
+      "es2015-node4"
+    ]
+  },
   "jest": {
     "testEnvironment": "node",
     "testPathDirs": [
