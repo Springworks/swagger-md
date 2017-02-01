@@ -1,22 +1,11 @@
 import type_picker from './type-picker';
-import linkToHeader from './link-to-header';
-
-function extractDefinitionName(ref) {
-  return ref.split('/').pop();
-}
 
 function nextIndentation(indentation) {
   return `${indentation}  `;
 }
 
 function formatSchemaType(schema) {
-  if (schema.$ref) {
-    return linkToHeader(extractDefinitionName(schema.$ref));
-  }
   const type = type_picker.extractType(schema);
-  if (schema.format) {
-    return `(${type}: ${schema.format})`;
-  }
   if (type === 'string' && schema.enum) {
     return `(${type}: ${schema.enum.join(', ')})`;
   }

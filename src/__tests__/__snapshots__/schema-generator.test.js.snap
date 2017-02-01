@@ -1,6 +1,6 @@
 exports[`createSchemaList with a array schema of $refs should return a list with the properties 1`] = `
 "- (array)
-  - [Pet](#pet)"
+  - ($ref: \`#/definitions/Pet\`)"
 `;
 
 exports[`createSchemaList with a object schema having nested properties should return a list with the properties 1`] = `
@@ -20,7 +20,7 @@ exports[`createSchemaList with a object schema having properties should return a
   - tag (string) (optional)"
 `;
 
-exports[`createSchemaList with a schema being a $ref should return a list with a single item; the name of the definition 1`] = `"- [Pet](#pet)"`;
+exports[`createSchemaList with a schema being a $ref should return a list with a single item; the name of the definition 1`] = `"- ($ref: \`#/definitions/Pet\`)"`;
 
 exports[`createSchemaList with schema having property with enum values should include enumerable values in string definition 1`] = `
 "- (object)
