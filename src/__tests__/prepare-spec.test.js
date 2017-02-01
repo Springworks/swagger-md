@@ -1,5 +1,5 @@
 import prepareSpec from '../prepare-spec';
-import fixtures from '../../test-util/fixtures';
+import fixtures from '../../test-fixtures/fixtures';
 
 describe('prepareSpec', () => {
 

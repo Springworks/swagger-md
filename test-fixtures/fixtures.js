@@ -1,6 +1,6 @@
 import { create as createFixtureLoader } from 'fixture-loader';
 
-const fixture_loader = createFixtureLoader('./test-util/fixtures');
+const fixture_loader = createFixtureLoader('./test-fixtures/fixtures');
 
 const api = {
 

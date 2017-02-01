@@ -37,7 +37,7 @@ var swagger_md = require('swagger-md').default;
 
 ## What can it do?
 
-See `./test-util/fixtures/markdown` and `./test-util/fixtures/swagger` for examples of a `swagger.json` converted to Markdown.
+See `./test-fixtures/swagger` for examples of a `swagger.json` converted to Markdown.
 
 Want it do handle more? Feel free to contribute!
 

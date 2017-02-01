@@ -1,4 +1,4 @@
-import fixtures from '../../test-util/fixtures';
+import fixtures from '../../test-fixtures/fixtures';
 import converter from '../index';
 
 describe('convertToMarkdown', () => {
