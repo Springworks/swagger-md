@@ -1,43 +1,51 @@
 {
   "name": "swagger-md",
   "description": "Converts Swagger API spec to Markdown file",
-  "main": "dist/swagger-converter.js",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "NODE_ENV=test istanbul cover _mocha",
-    "test-no-cov": "NODE_ENV=test mocha",
+    "test": "jest",
+    "test-cov": "jest --coverage",
+    "test-watch": "jest --watch",
     "lint": "eslint --cache .",
-    "build": "rm -rf dist && babel src --out-dir dist",
+    "build": "rm -rf dist && babel src --out-dir dist --ignore __tests__",
     "commit": "commit-wizard",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prepublish": "npm run build",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
+  "dependencies": {
+    "json-schema-ref-parser": "3.1.2",
+    "lodash": "4.17.4"
+  },
   "devDependencies": {
-    "@springworks/test-harness": "1.5.4",
     "babel-cli": "6.22.2",
     "babel-eslint": "7.1.1",
+    "babel-jest": "18.0.0",
+    "babel-polyfill": "6.22.0",
     "babel-preset-es2015-node4": "2.1.1",
-    "babel-register": "6.22.0",
     "eslint": "3.14.1",
     "eslint-config-springworks": "7.0.7",
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-mocha": "4.8.0",
-    "eslint-plugin-should-promised": "2.0.0",
     "eslint-plugin-springworks": "2.0.1",
     "fixture-loader": "1.0.1",
-    "istanbul": "1.1.0-alpha.1",
-    "mocha": "3.2.0",
-    "pre-git": "3.12.0",
+    "jest": "18.1.0",
     "semantic-release": "6.3.2"
+  },
+  "babel": {
+    "presets": [
+      "es2015-node4"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "engines": {
     "node": ">=4",
     "npm": ">=2.7"
-  },
-  "config": {
-    "pre-git": {
-      "commit-msg": "conventional"
-    }
   },
   "repository": {
     "type": "git",

@@ -1,38 +1,49 @@
-/**
- * Determines type of a parameter.
- */
-
-function generateDefinitionReference(ref) {
-  if (!ref) {
-    throw new Error(`Invalid ref to definition (got ref: ${ref})`);
-  }
-  const definition_name = ref.split('/').pop();
-  return `${definition_name}`;
+function formatRef({ $ref }) {
+  return `$ref: \`${$ref}\``;
 }
 
+function getNumberType({ type, format }) {
+  if (format === 'integer' || format === 'int32' || format === 'int64' || format === 'float' || format === 'double') {
+    return format;
+  }
+  if (type === 'number' || type === 'integer') {
+    return type;
+  }
+  return null;
+}
+
+function extractType(param) {
+  if (param.$ref) {
+    return formatRef(param);
+  }
+
+  if (param.schema) {
+    return extractType(param.schema);
+  }
+
+  const number_type = getNumberType(param);
+  if (number_type) {
+    return number_type;
+  }
+
+  const { type, format } = param;
+
+  if (format) {
+    return `${type}, ${format}`;
+  }
+
+  if (type) {
+    return type;
+  }
+
+  return 'unspecified type';
+}
+
+
 const api = {
-
-  extractType(param) {
-    if (param.type) {
-      return param.type;
-    }
-
-    if (param.$ref) {
-      return generateDefinitionReference(param.$ref);
-    }
-
-    if (param.schema) {
-      if (param.schema.$ref) {
-        return generateDefinitionReference(param.schema.$ref);
-      }
-      else if (param.schema.type) {
-        return param.schema.type;
-      }
-    }
-
-    return 'unspecified type';
-  },
-
+  formatRef,
+  getNumberType,
+  extractType,
 };
 
 export default api;

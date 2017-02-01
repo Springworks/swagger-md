@@ -6,7 +6,7 @@
 import schema_generator from './schema-generator';
 import createParametersTable from './request-parameters-table';
 
-function generateMethods(path_key, path, opt_response_example_provider) {
+function generateMethods(path_key, path, response_example_provider) {
   return Object.keys(path).map(method => {
     const method_spec = path[method];
     return [
@@ -18,7 +18,7 @@ function generateMethods(path_key, path, opt_response_example_provider) {
       generateParameters(method_spec.parameters || []),
       generateBodySchema(method_spec.parameters || []),
       generateResponses(method_spec.responses),
-      generateExampleResponse(path_key, method, opt_response_example_provider),
+      generateExampleResponse(path_key, method, response_example_provider),
     ].filter(Boolean).join('\n\n');
   });
 }
@@ -57,11 +57,11 @@ function generateResponseSchema(response) {
   return schema_generator.createSchemaList(response.schema);
 }
 
-function generateExampleResponse(path_key, method, opt_response_example_provider) {
-  if (!opt_response_example_provider) {
+function generateExampleResponse(path_key, method, response_example_provider) {
+  if (!response_example_provider) {
     return undefined;
   }
-  const example_response = opt_response_example_provider(path_key.toLowerCase(), method.toLowerCase());
+  const example_response = response_example_provider(path_key.toLowerCase(), method.toLowerCase());
   return [
     '#### Example response',
     example_response,
@@ -79,8 +79,8 @@ function externalDocs(spec, key) {
 
 const api = {
 
-  generatePath(path_key, path, opt_response_example_provider) {
-    return generateMethods(path_key, path, opt_response_example_provider).join('\n\n');
+  generatePath(path_key, path, response_example_provider) {
+    return generateMethods(path_key, path, response_example_provider).join('\n\n');
   },
 
 };

@@ -1,5 +1,4 @@
 import type_picker from './type-picker';
-import linkToHeader from './link-to-header';
 import createTable from './md-table';
 
 
@@ -35,13 +34,17 @@ export default function createParametersTable(params) {
 
 
 function formatParamType(param) {
+  if (param.$ref) {
+    return type_picker.formatRef(param);
+  }
   if (param.schema) {
     if (param.schema.$ref) {
-      return linkToHeader(type_picker.extractType(param.schema));
+      return type_picker.formatRef(param.schema);
     }
     return '';
   }
-  let type = param.type;
+
+  let { type } = param;
   if (!type) {
     return '';
   }
@@ -51,22 +54,28 @@ function formatParamType(param) {
       type = `${type} of ${formatParamType(param.items)}`;
     }
   }
-  if (param.format) {
-    type = `${type}, ${param.format}`;
+  const number_type = type_picker.getNumberType(param);
+  if (number_type) {
+    return number_type;
+  }
+
+  const { format } = param;
+  if (format) {
+    return `${type}, ${format}`;
   }
   if (type === 'string' && param.enum) {
-    type = `${type}: ${param.enum.join(', ')}`;
+    return `${type}: ${param.enum.join(', ')}`;
   }
   return type;
 }
 
 function formatParamRange(param) {
-  return formatRange('number', param.minimum, param.maximum, param.exclusiveMinimum, param.exclusiveMaximum) ||
-         formatRange('length', param.minLength, param.maxLength, false, false) ||
-         formatRange('items', param.minItems, param.maxItems, false, false);
+  return formatRange(param, 'number', param.minimum, param.maximum, param.exclusiveMinimum, param.exclusiveMaximum) ||
+         formatRange(param, 'length', param.minLength, param.maxLength, false, false) ||
+         formatRange(param, 'items', param.minItems, param.maxItems, false, false);
 }
 
-function formatRange(type, min, max, exclusive_min, exclusive_max) {
+function formatRange(param, type, min, max, exclusive_min, exclusive_max) {
   const has_min = typeof min === 'number';
   const has_max = typeof max === 'number';
   if (!has_min && !has_max) {
@@ -76,7 +85,12 @@ function formatRange(type, min, max, exclusive_min, exclusive_max) {
   if (has_min) {
     r = `${min} ${exclusive_min ? '<' : '<='} `;
   }
-  r += type;
+  if (type === 'number') {
+    r += type_picker.getNumberType(param) || type;
+  }
+  else {
+    r += type;
+  }
   if (has_max) {
     r += ` ${exclusive_max ? '<' : '<='} ${max}`;
   }
