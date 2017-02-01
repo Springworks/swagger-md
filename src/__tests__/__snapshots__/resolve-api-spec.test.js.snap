@@ -1,0 +1,303 @@
+exports[`resolveApiSpec should resolve the spec 1`] = `
+Object {
+  "basePath": "/api",
+  "consumes": Array [
+    "application/json",
+  ],
+  "host": "petstore.swagger.io",
+  "info": Object {
+    "contact": Object {
+      "email": "foo@example.com",
+      "name": "Swagger API Team",
+      "url": "http://madskristensen.net",
+    },
+    "description": "A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification",
+    "license": Object {
+      "name": "MIT",
+      "url": "http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT",
+    },
+    "termsOfService": "http://swagger.io/terms/",
+    "title": "Swagger Petstore",
+    "version": "1.0.0",
+  },
+  "paths": Object {
+    "/pets": Object {
+      "get": Object {
+        "description": "Returns all pets from the system that the user has access to",
+        "operationId": "findPets",
+        "parameters": Array [
+          Object {
+            "collectionFormat": "csv",
+            "description": "tags to filter by",
+            "in": "query",
+            "items": Object {
+              "enum": Array [
+                "clueless",
+                "lazy",
+                "adventurous",
+                "aggressive",
+              ],
+              "type": "string",
+            },
+            "maxItems": 3,
+            "minItems": 0,
+            "name": "tags",
+            "required": false,
+            "type": "array",
+            "uniqueItems": true,
+          },
+          Object {
+            "default": 20,
+            "description": "maximum number of results to return",
+            "exclusiveMinimum": true,
+            "format": "int32",
+            "in": "query",
+            "maximum": 200,
+            "minimum": 0,
+            "name": "limit",
+            "required": false,
+            "type": "integer",
+          },
+          Object {
+            "description": "results offset",
+            "format": "int32",
+            "in": "query",
+            "minimum": 0,
+            "name": "offset",
+            "required": false,
+            "type": "integer",
+          },
+        ],
+        "responses": Object {
+          "200": Object {
+            "description": "pet response",
+            "schema": Object {
+              "items": Object {
+                "description": "A pet",
+                "properties": Object {
+                  "id": Object {
+                    "format": "int64",
+                    "type": "integer",
+                  },
+                  "name": Object {
+                    "description": "The pet\'s name",
+                    "type": "string",
+                  },
+                  "tag": Object {
+                    "type": "string",
+                  },
+                },
+                "required": Array [
+                  "name",
+                  "id",
+                ],
+                "type": "object",
+              },
+              "type": "array",
+            },
+          },
+          "default": Object {
+            "description": "unexpected error",
+            "schema": Object {
+              "properties": Object {
+                "code": Object {
+                  "format": "int32",
+                  "type": "integer",
+                },
+                "message": Object {
+                  "type": "string",
+                },
+              },
+              "required": Array [
+                "code",
+                "message",
+              ],
+              "type": "object",
+            },
+          },
+        },
+      },
+      "post": Object {
+        "description": "Creates a new pet in the store.  Duplicates are allowed",
+        "operationId": "addPet",
+        "parameters": Array [
+          Object {
+            "description": "Pet to add to the store",
+            "in": "body",
+            "name": "pet",
+            "required": true,
+            "schema": Object {
+              "description": "A pet",
+              "properties": Object {
+                "name": Object {
+                  "description": "The pet\'s name",
+                  "type": "string",
+                },
+                "tag": Object {
+                  "type": "string",
+                },
+              },
+              "required": Array [
+                "name",
+              ],
+              "type": "object",
+            },
+          },
+        ],
+        "responses": Object {
+          "200": Object {
+            "description": "pet response",
+            "schema": Object {
+              "description": "A pet",
+              "properties": Object {
+                "id": Object {
+                  "format": "int64",
+                  "type": "integer",
+                },
+                "name": Object {
+                  "description": "The pet\'s name",
+                  "type": "string",
+                },
+                "tag": Object {
+                  "type": "string",
+                },
+              },
+              "required": Array [
+                "name",
+                "id",
+              ],
+              "type": "object",
+            },
+          },
+          "default": Object {
+            "description": "unexpected error",
+            "schema": Object {
+              "properties": Object {
+                "code": Object {
+                  "format": "int32",
+                  "type": "integer",
+                },
+                "message": Object {
+                  "type": "string",
+                },
+              },
+              "required": Array [
+                "code",
+                "message",
+              ],
+              "type": "object",
+            },
+          },
+        },
+      },
+    },
+    "/pets/{id}": Object {
+      "delete": Object {
+        "deprecated": true,
+        "description": "deletes a single pet based on the ID supplied",
+        "operationId": "deletePet",
+        "parameters": Array [
+          Object {
+            "description": "ID of pet to delete",
+            "format": "int64",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+          },
+        ],
+        "responses": Object {
+          "204": Object {
+            "description": "pet deleted",
+          },
+          "default": Object {
+            "description": "unexpected error",
+            "schema": Object {
+              "properties": Object {
+                "code": Object {
+                  "format": "int32",
+                  "type": "integer",
+                },
+                "message": Object {
+                  "type": "string",
+                },
+              },
+              "required": Array [
+                "code",
+                "message",
+              ],
+              "type": "object",
+            },
+          },
+        },
+      },
+      "get": Object {
+        "description": "Returns a user based on a single ID, if the user does not have access to the pet",
+        "operationId": "find pet by id",
+        "parameters": Array [
+          Object {
+            "description": "ID of pet to fetch",
+            "format": "int64",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+          },
+        ],
+        "responses": Object {
+          "200": Object {
+            "description": "pet response",
+            "schema": Object {
+              "description": "A pet",
+              "properties": Object {
+                "id": Object {
+                  "format": "int64",
+                  "type": "integer",
+                },
+                "name": Object {
+                  "description": "The pet\'s name",
+                  "type": "string",
+                },
+                "tag": Object {
+                  "type": "string",
+                },
+              },
+              "required": Array [
+                "name",
+                "id",
+              ],
+              "type": "object",
+            },
+          },
+          "default": Object {
+            "description": "unexpected error",
+            "schema": Object {
+              "properties": Object {
+                "code": Object {
+                  "format": "int32",
+                  "type": "integer",
+                },
+                "message": Object {
+                  "type": "string",
+                },
+              },
+              "required": Array [
+                "code",
+                "message",
+              ],
+              "type": "object",
+            },
+          },
+        },
+      },
+    },
+  },
+  "produces": Array [
+    "application/json",
+  ],
+  "schemes": Array [
+    "http",
+  ],
+  "swagger": "2.0",
+}
+`;

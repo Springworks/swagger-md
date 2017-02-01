@@ -41,6 +41,21 @@ swagger_md.convertToMarkdown(path_to_spec).then(markdown_str => {
 ```
 
 
+`resolveApiSpec` resolves the API spec in the same way as `convertToMarkdown` but returns the resolved object without converting it to markdown
+
+```js
+const path_to_spec = 'path/to/api-spec.json';
+const options = {
+  // optionally specify that external refs should be fetched and resolved
+  external: true
+};
+
+swagger_md.resolveApiSpec(path_to_spec, options).then(spec => {
+  // spec == the resolved API spec
+});
+```
+
+
 To use the swagger-md in a CommonJS module environment the usage statement should look like:
 
 ```js

@@ -1,6 +1,7 @@
 import RefParser from 'json-schema-ref-parser';
 
-export default function prepareSpec(spec) {
+export default function prepareSpec(spec, options) {
   const parser = new RefParser();
-  return parser.dereference(spec, { external: false });
+  const external = !!(options && options.external === true);
+  return parser.dereference(spec, { external });
 }
