@@ -1,3 +1,4 @@
+import fs from 'fs';
 import fixtures from '../../test-fixtures/fixtures';
 import converter from '../index';
 
@@ -36,6 +37,28 @@ describe('convertToMarkdown', () => {
         });
       });
 
+    });
+
+  });
+
+  describe('resolving local refs in separate files', () => {
+    let expected_markdown;
+
+    beforeEach(done => {
+      fs.readFile('test-fixtures/fixtures/api/api.md', { encoding: 'utf8' }, (err, str) => {
+        if (err) {
+          done(err);
+          return;
+        }
+        expected_markdown = str;
+        done();
+      });
+    });
+
+    it('should resolve everything', () => {
+      return converter.convertToMarkdown('test-fixtures/fixtures/api/api.json', null).then(markdown_str => {
+        expect(markdown_str).toBe(expected_markdown);
+      });
     });
 
   });

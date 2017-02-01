@@ -12,7 +12,8 @@ npm install swagger-md
 ```
 
 Convert Swagger API spec to Markdown format:
-```
+
+```js
 import swagger_md from 'swagger-md';
 import swagger_spec from './swagger-api-spec.json';
 
@@ -29,8 +30,20 @@ swagger_md.convertToMarkdown(swagger_spec, { response_example_provider: response
 });
 ```
 
-To use the swagger-md in a CommonJS module environment the usage statement should look like:
+
+```js
+// It is also possible to pass a path to the root file of the API spec (can be json or yaml) and supports local file refs.
+const path_to_spec = 'path/to/api-spec.json';
+
+swagger_md.convertToMarkdown(path_to_spec).then(markdown_str => {
+  // refs to other local files are resolved and the markdown contains the entire API
+});
 ```
+
+
+To use the swagger-md in a CommonJS module environment the usage statement should look like:
+
+```js
 var swagger_md = require('swagger-md').default;
 ...
 ```
