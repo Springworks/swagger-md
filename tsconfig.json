@@ -1,12 +1,7 @@
 {
   "compilerOptions": {
-    "rootDir": "src",
     "outDir": "build",
     "target": "es5",
-    "typeRoots": [
-      "./node_modules/@types",
-      "./types"
-    ],
     "alwaysStrict": true,
     "declaration": true,
     "noFallthroughCasesInSwitch": true,
@@ -14,8 +9,12 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "sourceMap": false,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "lib": ["es2015"]
   },
+  "include": [
+    "src"
+  ],
   "exclude": [
     "**/*.test.ts"
   ]
