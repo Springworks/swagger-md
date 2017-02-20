@@ -1,8 +1,8 @@
-function formatRef({ $ref }) {
+function formatRef({ $ref }: { $ref: string }): string {
   return `$ref: \`${$ref}\``;
 }
 
-function getNumberType({ type, format }) {
+function getNumberType({ type, format }: { type: string, format: string }) {
   if (format === 'integer' || format === 'int32' || format === 'int64' || format === 'float' || format === 'double') {
     return format;
   }
@@ -12,7 +12,7 @@ function getNumberType({ type, format }) {
   return null;
 }
 
-function extractType(param) {
+function extractType(param: any): string {
   if (param.$ref) {
     return formatRef(param);
   }

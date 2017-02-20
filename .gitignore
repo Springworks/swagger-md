@@ -33,4 +33,4 @@ coverage
 .eslintcache
 
 # Ignore build output
-dist
+build

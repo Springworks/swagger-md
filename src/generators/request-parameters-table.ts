@@ -2,7 +2,7 @@ import type_picker from './type-picker';
 import createTable from './md-table';
 
 
-export default function createParametersTable(params) {
+export default function createParametersTable(params: Array<any>): string | undefined {
   if (!params.length) {
     return undefined;
   }
@@ -33,7 +33,7 @@ export default function createParametersTable(params) {
 }
 
 
-function formatParamType(param) {
+function formatParamType(param: any): string {
   if (param.$ref) {
     return type_picker.formatRef(param);
   }
@@ -69,13 +69,13 @@ function formatParamType(param) {
   return type;
 }
 
-function formatParamRange(param) {
+function formatParamRange(param: any): string | undefined {
   return formatRange(param, 'number', param.minimum, param.maximum, param.exclusiveMinimum, param.exclusiveMaximum) ||
          formatRange(param, 'length', param.minLength, param.maxLength, false, false) ||
          formatRange(param, 'items', param.minItems, param.maxItems, false, false);
 }
 
-function formatRange(param, type, min, max, exclusive_min, exclusive_max) {
+function formatRange(param: any, type: string, min: number | undefined, max: number | undefined, exclusive_min: boolean, exclusive_max: boolean): string | undefined {
   const has_min = typeof min === 'number';
   const has_max = typeof max === 'number';
   if (!has_min && !has_max) {
@@ -97,7 +97,7 @@ function formatRange(param, type, min, max, exclusive_min, exclusive_max) {
   return `\`${r}\``;
 }
 
-function formatCode(value, as_json) {
+function formatCode(value: any, as_json: boolean): string | undefined {
   if (value === undefined) {
     return undefined;
   }

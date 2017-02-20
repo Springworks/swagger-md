@@ -1,6 +1,6 @@
-import _ from 'lodash';
+import * as _ from 'lodash';
 
-export default function resolveAllOf(spec) {
+export default function resolveAllOf(spec: any): any {
   if (!spec || typeof spec !== 'object') {
     return spec;
   }
@@ -11,11 +11,11 @@ export default function resolveAllOf(spec) {
   return _.mapValues(merged, resolveAllOf);
 }
 
-function inlineAllOf(spec) {
+function inlineAllOf(spec: any): any {
   const copy = _.omit(spec, 'allOf');
   return _.mergeWith(copy, ...spec.allOf, unionIfArray);
 }
 
-function unionIfArray(dest, src) {
+function unionIfArray(dest: any, src: any): Array<any> | undefined {
   return Array.isArray(dest) ? _.union(dest, src) : undefined;
 }

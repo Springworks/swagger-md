@@ -1,7 +1,0 @@
-exports[`generateTableOfContents should return the TOC section 1`] = `
-"- [Endpoints](#endpoints)
-  - [GET /pets](#get-pets)
-  - [POST /pets](#post-pets)
-  - [GET /pets/{id}](#get-petsid)
-  - [DELETE /pets/{id}](#delete-petsid) _\`deprecated\`_"
-`;

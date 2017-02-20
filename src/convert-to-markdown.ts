@@ -5,7 +5,7 @@ import path_generator from './generators/path-generator';
 
 const paths_header = 'Endpoints';
 
-function convertPaths(paths, response_example_provider) {
+function convertPaths(paths: any, response_example_provider: any): any {
   return [
     `## ${paths_header}`,
     Object.keys(paths).map(path_key => {
@@ -14,8 +14,8 @@ function convertPaths(paths, response_example_provider) {
   ].join('\n\n');
 }
 
-export default function convertToMarkdown(swagger_spec, options) {
-  return resolveApiSpec(swagger_spec, options).then(spec => {
+export default function convertToMarkdown(swagger_spec: any, options: any): any {
+  return resolveApiSpec(swagger_spec, options).then((spec: any) => {
     const opts = options || {};
     const intro = intro_generator.generateApiIntro(spec);
     const toc = toc_generator.generateTableOfContents(paths_header, spec.paths);

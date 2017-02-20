@@ -1,10 +1,10 @@
 import type_picker from './type-picker';
 
-function nextIndentation(indentation) {
+function nextIndentation(indentation: string): string {
   return `${indentation}  `;
 }
 
-function formatSchemaType(schema) {
+function formatSchemaType(schema: any): string {
   const type = type_picker.extractType(schema);
   if (type === 'string' && schema.enum) {
     return `(${type}: ${schema.enum.join(', ')})`;
@@ -12,13 +12,13 @@ function formatSchemaType(schema) {
   return `(${type})`;
 }
 
-function formatListItem(name, schema, indentation, is_optional) {
+function formatListItem(name: string, schema: any, indentation: string, is_optional: boolean): string {
   const type = formatSchemaType(schema);
   const desc = schema.description ? ` ${schema.description}` : '';
   return `${indentation}- ${name}${name ? ' ' : ''}${type}${is_optional ? ' (optional)' : ''}${desc}`;
 }
 
-function recursiveAppendLines(lines, name, schema, indentation, is_optional) {
+function recursiveAppendLines(lines: Array<string>, name: string, schema: any, indentation: string, is_optional: boolean): void {
   lines.push(formatListItem(name, schema, indentation, is_optional));
 
   if (schema.type === 'object' && schema.properties) {
@@ -35,11 +35,11 @@ function recursiveAppendLines(lines, name, schema, indentation, is_optional) {
 
 const api = {
 
-  createSchemaList(schema) {
+  createSchemaList(schema: any): string {
     if (!schema.type && !schema.$ref) {
       return 'N/A';
     }
-    const lines = [];
+    const lines: Array<string> = [];
     recursiveAppendLines(lines, '', schema, '', false);
     return lines.join('\n');
   },

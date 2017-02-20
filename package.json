@@ -1,18 +1,16 @@
 {
   "name": "swagger-md",
   "description": "Converts Swagger API spec to Markdown file",
-  "main": "dist/index.js",
+  "main": "build/index.js",
   "files": [
-    "dist"
+    "build"
   ],
   "scripts": {
     "test": "jest",
     "test-cov": "jest --coverage",
     "test-watch": "jest --watch",
     "lint": "eslint --cache .",
-    "build": "rm -rf dist && babel src --out-dir dist --ignore __tests__",
-    "commit": "commit-wizard",
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "build": "rm -rf build && tsc",
     "prepublish": "npm run build",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -21,11 +19,8 @@
     "lodash": "4.17.4"
   },
   "devDependencies": {
-    "babel-cli": "6.22.2",
-    "babel-eslint": "7.1.1",
-    "babel-jest": "18.0.0",
-    "babel-polyfill": "6.22.0",
-    "babel-preset-es2015-node4": "2.1.1",
+    "@types/jest": "18.1.1",
+    "@types/lodash": "4.14.52",
     "eslint": "3.15.0",
     "eslint-config-springworks": "7.0.7",
     "eslint-plugin-import": "2.2.0",
@@ -33,15 +28,19 @@
     "eslint-plugin-springworks": "2.0.1",
     "fixture-loader": "1.0.1",
     "jest": "18.1.0",
-    "semantic-release": "6.3.2"
-  },
-  "babel": {
-    "presets": [
-      "es2015-node4"
-    ]
+    "semantic-release": "6.3.2",
+    "typescript": "2.1.6"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.ts$": "<rootDir>/test-preprocessor.js"
+    },
+    "testRegex": "/__tests__/.*\\.(ts|js)$"
   },
   "engines": {
     "node": ">=4",

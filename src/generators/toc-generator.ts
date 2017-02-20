@@ -2,8 +2,8 @@ import linkToHeader from './link-to-header';
 
 const api = {
 
-  generateTableOfContents(paths_header, paths) {
-    const toc_array = [];
+  generateTableOfContents(paths_header: string, paths: any): string {
+    const toc_array: Array<string> = [];
 
     toc_array.push(`- ${linkToHeader(paths_header)}`);
 
