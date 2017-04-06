@@ -30,7 +30,7 @@
     "eslint-config-springworks": "7.0.7",
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-mocha": "4.8.0",
-    "eslint-plugin-springworks": "2.0.1",
+    "eslint-plugin-springworks": "2.1.0",
     "fixture-loader": "1.0.1",
     "jest": "18.1.0",
     "semantic-release": "6.3.2"
