@@ -1,10 +1,6 @@
-/**
- * Generates markdown for a specific Swagger path,
- * including all of its methods.
- */
-
-import schema_generator from './schema-generator';
+import { STATUS_CODES } from 'http';
 import createParametersTable from './request-parameters-table';
+import schema_generator from './schema-generator';
 
 function generateMethods(path_key, path, response_example_provider) {
   return Object.keys(path).map(method => {
@@ -38,11 +34,11 @@ function generateBodySchema(params) {
 }
 
 function generateResponses(responses) {
-  return Object.keys(responses).map(response_key => {
-    const response = responses[response_key];
+  return Object.keys(responses).map(status_code => {
+    const response = responses[status_code];
     const schema = generateResponseSchema(response);
     return [
-      `#### Response: ${response_key}`,
+      `#### Response: ${formatStatusCode(status_code)}`,
       response.description,
       '**Schema**',
       schema,
@@ -66,6 +62,13 @@ function generateExampleResponse(path_key, method, response_example_provider) {
     '#### Example response',
     example_response,
   ].join('\n\n');
+}
+
+function formatStatusCode(status_code) {
+  if (STATUS_CODES.hasOwnProperty(status_code)) {
+    return `${status_code} ${STATUS_CODES[status_code]}`;
+  }
+  return status_code;
 }
 
 function deprecationWarning(spec) {

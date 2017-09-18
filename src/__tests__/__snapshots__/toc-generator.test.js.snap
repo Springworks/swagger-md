@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`generateTableOfContents should return the TOC section 1`] = `
 "- [Endpoints](#endpoints)
   - [GET /pets](#get-pets)

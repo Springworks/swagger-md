@@ -22,7 +22,7 @@ Returns all pets from the system that the user has access to
 | query | limit  | int32                                                         | false    | maximum number of results to return | `0 < int32 <= 200` | `20`    |        |
 | query | offset | int32                                                         | false    | results offset                      | `0 <= int32`       |         |        |
 
-#### Response: 200
+#### Response: 200 OK
 
 pet response
 
@@ -60,7 +60,7 @@ Creates a new pet in the store.  Duplicates are allowed
   - name (string) The pet's name
   - tag (string) (optional)
 
-#### Response: 200
+#### Response: 200 OK
 
 pet response
 
@@ -91,7 +91,7 @@ Returns a user based on a single ID, if the user does not have access to the pet
 |------|------|-------|----------|--------------------|
 | path | id   | int64 | true     | ID of pet to fetch |
 
-#### Response: 200
+#### Response: 200 OK
 
 pet response
 
@@ -124,7 +124,7 @@ deletes a single pet based on the ID supplied
 |------|------|-------|----------|---------------------|
 | path | id   | int64 | true     | ID of pet to delete |
 
-#### Response: 204
+#### Response: 204 No Content
 
 pet deleted
 
