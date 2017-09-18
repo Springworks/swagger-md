@@ -32,5 +32,7 @@ node_modules
 coverage
 .eslintcache
 
+/package-lock.json
+
 # Ignore build output
 dist
