@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`convertToMarkdown with a valid, parsed Swagger spec providing a response_example_provider function, to generate examples for each response should return contents of a valid .md file 1`] = `
 "# Swagger Petstore, version 1.0.0
 
@@ -31,7 +33,7 @@ pet response
 
 - (array)
   - (object) A pet
-    - name (string) The pet\'s name
+    - name (string) The pet's name
     - tag (string) (optional)
     - id (int64)
 
@@ -49,7 +51,7 @@ unexpected error
 
 \`\`\`json
 {
-  \"foo\": \"bar\"
+  \\"foo\\": \\"bar\\"
 }
 \`\`\`
 
@@ -66,7 +68,7 @@ Creates a new pet in the store.  Duplicates are allowed
 **Request Body**
 
 - (object) A pet
-  - name (string) The pet\'s name
+  - name (string) The pet's name
   - tag (string) (optional)
 
 #### Response: 200 OK
@@ -76,7 +78,7 @@ pet response
 **Schema**
 
 - (object) A pet
-  - name (string) The pet\'s name
+  - name (string) The pet's name
   - tag (string) (optional)
   - id (int64)
 
@@ -94,7 +96,7 @@ unexpected error
 
 \`\`\`json
 {
-  \"foo\": \"bar\"
+  \\"foo\\": \\"bar\\"
 }
 \`\`\`
 
@@ -115,7 +117,7 @@ pet response
 **Schema**
 
 - (object) A pet
-  - name (string) The pet\'s name
+  - name (string) The pet's name
   - tag (string) (optional)
   - id (int64)
 
@@ -133,7 +135,7 @@ unexpected error
 
 \`\`\`json
 {
-  \"foo\": \"bar\"
+  \\"foo\\": \\"bar\\"
 }
 \`\`\`
 
@@ -171,7 +173,7 @@ unexpected error
 
 \`\`\`json
 {
-  \"foo\": \"bar\"
+  \\"foo\\": \\"bar\\"
 }
 \`\`\`
 "

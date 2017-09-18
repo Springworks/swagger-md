@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`createTable alignment should align to a wide header 1`] = `
 "| a | b | wide_header |
 |---|---|-------------|

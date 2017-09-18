@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`createSchemaList with a array schema of $refs should return a list with the properties 1`] = `
 "- (array)
   - ($ref: \`#/definitions/Pet\`)"

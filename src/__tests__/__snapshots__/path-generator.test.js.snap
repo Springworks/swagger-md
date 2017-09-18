@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`generatePath with an API spec having mixed properties; some defined, some omitted should render markdown and omit unspecified data, e.g. descriptions, schemas 1`] = `
 "### GET /pets/{id}
 
