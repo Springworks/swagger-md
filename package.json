@@ -32,7 +32,7 @@
     "eslint-plugin-mocha": "^4.8.0",
     "eslint-plugin-springworks": "^2.0.1",
     "fixture-loader": "^1.0.1",
-    "jest": "^21.1.0",
+    "jest": "^22.0.0",
     "semantic-release": "^8.0.0"
   },
   "babel": {
