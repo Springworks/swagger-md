@@ -33,7 +33,7 @@
     "eslint-plugin-springworks": "^2.0.1",
     "fixture-loader": "^1.0.1",
     "jest": "^21.1.0",
-    "semantic-release": "^8.0.0"
+    "semantic-release": "^11.0.2"
   },
   "babel": {
     "presets": [
